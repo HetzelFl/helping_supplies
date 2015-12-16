@@ -1,7 +1,7 @@
 <?php
 
 if ($_REQUEST['ID'] && $_REQUEST['Aktivierungscode']) {
-    require_once ($root . "/Paul-flo/includes/konfiguration.php");
+    require_once ($root . "/helping_supplies/includes/konfiguration.php");
     $db_link = mysqli_connect(
             MYSQL_HOST, MYSQL_BENUTZER, MYSQL_KENNWORT, MYSQL_DATENBANK
     );

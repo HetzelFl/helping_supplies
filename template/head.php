@@ -1,5 +1,10 @@
+<?php
+$root = $_SERVER['DOCUMENT_ROOT'];
+include($root . "/helping_supplies/includes/userControl.php");
+?>
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
 
   <!-- Basic Page Needs
@@ -7,7 +12,7 @@
   <meta charset="utf-8">
   <title>Paul</title>
   <meta name="description" content="">
-  <meta name="author" content="">
+  <meta name="author" content="HFU">
 
   <!-- Mobile Specific Metas
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
@@ -19,18 +24,18 @@
 
   <!-- CSS
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  <link rel="stylesheet" href="/Paul-flo/css/normalize.css">
-  <link rel="stylesheet" href="/Paul-flo/css/skeleton.css">
-  <link rel="stylesheet" href="/Paul-flo/css/style.css">
+  <link rel="stylesheet" href="/helping_supplies/css/normalize.css">
+  <link rel="stylesheet" href="/helping_supplies/css/skeleton.css">
+  <link rel="stylesheet" href="/helping_supplies/css/style.css">
 
   <!-- Favicon
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  <link rel="icon" type="image/png" href="/Paul-flo/images/favicon.png">
+  <link rel="icon" type="image/png" href="/helping_supplies/images/favicon.png">
 
   <!-- CSS Menu responsive script
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
-  <script src="/Paul-flo/template/script.js"></script>
+  <script src="/helping_supplies/template/script.js"></script>
 
 </head>
 <body>

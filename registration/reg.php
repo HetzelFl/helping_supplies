@@ -1,8 +1,8 @@
 <?php
 $root = $_SERVER['DOCUMENT_ROOT'];
 //include head and header
-include($root . "/Paul-flo/template/head.php");
-include($root . "/Paul-flo/template/header.php");
+include($root . "/helping_supplies/template/head.php");
+include($root . "/helping_supplies/template/header.php");
 
 //content
 // define variables and set to empty values
@@ -15,7 +15,7 @@ $Absender = "name@ihre-domain.de";
 if (isset($_REQUEST['Send'])) {
     $ErrCounter = 0;
     $root = $_SERVER['DOCUMENT_ROOT'];
-    require_once ($root . "/Paul-flo/includes/functions.php");
+    require_once ($root . "/helping_supplies/includes/functions.php");
 
     $username = filterfunktion($_REQUEST["lName"]);
     $name = filterfunktion($_REQUEST["name"]);
@@ -35,7 +35,7 @@ if (isset($_REQUEST['Send'])) {
     }
 
 
-    require_once ($root . "/Paul-flo/includes/dbConnect.php");
+    require_once ($root . "/helping_supplies/includes/dbConnect.php");
     //TODO nötig?
     $db_link = mysqli_connect(
             MYSQL_HOST, MYSQL_BENUTZER, MYSQL_KENNWORT, MYSQL_DATENBANK
@@ -84,5 +84,5 @@ if ($ErrCounter > 0) {
     </div>
     <?php
 }
-include($root . "/Paul-flo/template/footer.php");
+include($root . "/helping_supplies/template/footer.php");
 ?>

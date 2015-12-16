@@ -1,11 +1,11 @@
 <?php
 $root = $_SERVER['DOCUMENT_ROOT'];
 //include head and header
-include($root . "/Paul-flo/template/head.php");
-include($root . "/Paul-flo/template/header.php");
+include($root . "/helping_supplies/template/head.php");
+include($root . "/helping_supplies/template/header.php");
 
 //optional
-//include($root . "/Paul-flo/template/infobox.php");
+//include($root . "/helping_supplies/template/infobox.php");
 //content
 ?>
 
@@ -37,5 +37,5 @@ include($root . "/Paul-flo/template/header.php");
 </div>
 
 <?php
-include($root . "/Paul-flo/template/footer.php");
+include($root . "/helping_supplies/template/footer.php");
 ?>
