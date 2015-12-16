@@ -17,7 +17,7 @@
  
                     <li class='has-sub'><a href='#'>Einstellen</a>
                         <ul>
-                    <li><a href='#'>von Organisationen</a></li>
+                    <li><a href='#'>von Organisation</a></li>
                     <li><a href='#'>von Privat</a></li>
                         </ul>
                     <li><a href='#'>Auflisten</a></li>

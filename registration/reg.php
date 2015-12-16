@@ -4,8 +4,7 @@ $root = $_SERVER['DOCUMENT_ROOT'];
 include($root . "/helping_supplies/template/head.php");
 include($root . "/helping_supplies/template/header.php");
 
-//content
-// define variables and set to empty values
+//define variables and set to empty values
 $usernameErr = $nameErr = $eMailErr = $passwordErr = "";
 $ErrCounter = 1;
 
@@ -34,12 +33,7 @@ if (isset($_REQUEST['Send'])) {
         $ErrCounter++;
     }
 
-
     require_once ($root . "/helping_supplies/includes/dbConnect.php");
-    //TODO nötig?
-    $db_link = mysqli_connect(
-            MYSQL_HOST, MYSQL_BENUTZER, MYSQL_KENNWORT, MYSQL_DATENBANK
-    );
 
     $sql = "SELECT username,name FROM accounts";
     $db_erg = mysqli_query($db_link, $sql);
@@ -56,14 +50,20 @@ if (isset($_REQUEST['Send'])) {
     }
 
     if ($ErrCounter == 0) {
-        $Aktivierungscode = zufallsstring(12);
+        $Aktivierungscode = zufallsstring(15);
 
-        mysql_query($db_link, "INSERT INTO accounts (username, passwort, email, name, activation, active) VALUES ('$username', '$name', '$password', '$eMail', '$Aktivierungscode', 'FALSE')");
+        //mysql_query($db_link, "INSERT INTO `accounts` (`ID`, `username`, `passwort`, `email`, `name`, `website`, `activation`, `active`) VALUES (NULL, '" . $username . "', '" . $password . "', '" . $eMail . "', '" . $name . "', NULL, '" . $Aktivierungscode . "', 'FALSE')");
+        $sql = "INSERT INTO `accounts` (`ID`, `username`, `passwort`, `email`, `name`, `website`, `activation`, `active`) VALUES (NULL, '" . $username . "', '" . $password . "', '" . $eMail . "', '" . $name . "', NULL, '" . $Aktivierungscode . "', 'FALSE')";
+        mysqli_query($db_link, $sql);
 
-        $ID = mysql_insert_id();
+        $sql = "SELECT MAX(`ID`) FROM `accounts`";
+        $db_erg = mysqli_query($db_link, $sql);
 
+        while ($zeile = mysqli_fetch_array($db_erg, MYSQL_ASSOC)) {
+            $ID = $zeile['MAX(`ID`)'];
+        }
         //TODO aktivieren
-        //mail($_REQUEST['EMail'], "Registrierung abschließen", "Hallo,\n\num die Registrierung abzuschließen, klicken Sie bitte auf den folgenden Link:\n\nhttp://www.ihre-domain.de/reg-aktivieren.php?ID=$ID&Aktivierungscode=$Aktivierungscode", "FROM: $Absender");
+        mail($_REQUEST['EMail'], "Registrierung abschließen", "Hallo,\n\num die Registrierung abzuschließen, klicken Sie bitte auf den folgenden Link:\n\nhttp://www.ihre-domain.de/reg-aktivieren.php?ID=" . $ID . "&Aktivierungscode=" . $Aktivierungscode . "", "FROM: $Absender");
         echo"Um die Registrierung abzuschließen, rufen Sie Ihr E-Mail-Postfach ab und klicken Sie auf den Aktivierungslink in der soeben an Sie versandten E-Mail.";
     }
 }
