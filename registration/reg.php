@@ -63,7 +63,7 @@ if (isset($_REQUEST['Send'])) {
             $ID = $zeile['MAX(`ID`)'];
         }
         //TODO aktivieren
-        mail($_REQUEST['EMail'], "Registrierung abschließen", "Hallo,\n\num die Registrierung abzuschließen, klicken Sie bitte auf den folgenden Link:\n\nhttp://www.ihre-domain.de/reg-aktivieren.php?ID=" . $ID . "&Aktivierungscode=" . $Aktivierungscode . "", "FROM: $Absender");
+        //mail($_REQUEST['EMail'], "Registrierung abschließen", "Hallo,\n\num die Registrierung abzuschließen, klicken Sie bitte auf den folgenden Link:\n\nhttp://www.ihre-domain.de/reg-aktivieren.php?ID=" . $ID . "&Aktivierungscode=" . $Aktivierungscode . "", "FROM: $Absender");
         echo"Um die Registrierung abzuschließen, rufen Sie Ihr E-Mail-Postfach ab und klicken Sie auf den Aktivierungslink in der soeben an Sie versandten E-Mail.";
     }
 }
