@@ -4,16 +4,16 @@ $root = $_SERVER['DOCUMENT_ROOT'];
 //include head and header
 include_once ($root . "/helping_supplies/template/head.php");
 include_once ($root . "/helping_supplies/template/header.php");
-include '../AngebotEditieren/Edit_HTML_functions.php';
-include './filterOrgalistFunction.php';
+
 include '../includes/dbConnectPDO.php';
+include './Edit_HTML_functions.php';
 ?>
 <div class="container">
     <p></p>
-    <h3>Angebote von Organisationen</h3>
+    <h3>Ihre Angebote</h3>
         <table style="width: 100%">
             <tr align="left">
-                          <th>Organisation</th>
+                          <th>Name</th>
                           <th>Startland</th>
                           <th>Startdorf</th>
                           <th>Zielland</th>
@@ -22,9 +22,8 @@ include '../includes/dbConnectPDO.php';
                           <th>Produkt</th>
                           <th>Kontakt</th>
             </tr>
-            <?php
-                  $statement = filterNone();
-                  //$statement = filterStartCountry("Deutschland");
+            <?php              
+                  $statement = getOwnDeliverer(1); //TODO 1 mit sessionID austauschen
                    $id = -1;
                    $counter = 0;
                    

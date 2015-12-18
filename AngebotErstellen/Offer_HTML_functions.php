@@ -46,7 +46,7 @@ function checkBoxProducts(){
                  echo "";
              }
              
-             echo ">$row[productname]</p>\n";
+             echo "> $row[productname]</p>\n";
      }
 
     } catch (Exception $ex) {

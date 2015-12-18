@@ -1,8 +1,8 @@
 <?php
 $root = $_SERVER['DOCUMENT_ROOT'];
 //include head and header
-include_once ($root . "/PAUL/Template/template/head.php");
-include_once ($root . "/PAUL/Template/template/header.php");
+include_once ($root . "/helping_supplies/template/head.php");
+include_once ($root . "/helping_supplies/template/header.php");
 
 include './Angebot_erstellen.php';
 include './Offer_HTML_functions.php';
@@ -115,7 +115,7 @@ $id = 1;
 </div>
 <?php
 // include footer
-include_once ($root . "/PAUL/Template/template/footer.php");
+include_once ($root . "/helping_supplies/template/footer.php");
 
 ?>
     

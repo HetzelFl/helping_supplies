@@ -2,17 +2,18 @@
 
 $root = $_SERVER['DOCUMENT_ROOT'];
 //include head and header
-include_once ($root . "/PAUL/Template/template/head.php");
-include_once ($root . "/PAUL/Template/template/header.php");
+include_once ($root . "/helping_supplies/template/head.php");
+include_once ($root . "/helping_supplies/template/header.php");
 
 include './filterDelivererlistFunction.php';
-include './dbConnect.php';
-include './AngebotEditieren/Edit_HTML_functions.php';
+include '../includes/dbConnectPDO.php';
+include '../AngebotEditieren/Edit_HTML_functions.php';
 ?>
-
+<div class="container">
+    <p></p>
+    <h3>Angebote von Privatpersonen</h3>
         <table style="width: 100%">
             <tr align="left">
-                          <th>Angebots-ID</th>
                           <th>Name</th>
                           <th>Startland</th>
                           <th>Startdorf</th>
@@ -35,7 +36,6 @@ include './AngebotEditieren/Edit_HTML_functions.php';
                       if($id != htmlspecialchars($row['id'])){
                           $id = htmlspecialchars($row['id']);
                           echo "<tr align=\"left\">\n";
-                          echo "<td>" . htmlspecialchars($row['id']) . "</td>\n";
                           echo "<td>" . htmlspecialchars($row['name']) . "</td>\n";
                           echo "<td>" . htmlspecialchars($row['startCountry']) . "</td>\n";
                           echo "<td>" . htmlspecialchars($row['startVillage']) . "</td>\n";
@@ -63,9 +63,9 @@ include './AngebotEditieren/Edit_HTML_functions.php';
                   }
             ?>
         </table>
-
+</div>
 <?php
 // include footer
-include_once ($root . "/PAUL/Template/template/footer.php");
+include_once ($root . "/helping_supplies/template/footer.php");
 
 ?>

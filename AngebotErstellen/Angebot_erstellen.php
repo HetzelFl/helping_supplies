@@ -1,6 +1,6 @@
 <?php
 
-include '../dbConnect.php';
+include '../includes/dbConnectPDO.php';
 
 function create_Offer( $table, $name, $contact, $eMail, $startCountry, $startVillage,
                         $destinationCountry, $destinationVillage, $startDate, $endDate, $products)

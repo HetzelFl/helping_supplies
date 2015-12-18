@@ -40,7 +40,7 @@ function checkBoxProductsFilled($offer_id){
         
             $statementProd = "Select * from products";
 
-            if($table == 'organisation_Offer')
+            if($table == 'organisation_offer')
                 $statementJoin = "SELECT * FROM productsorgajoin WHERE ID_organisationOffer = $offer_id";
             else
                 $statementJoin = "SELECT * FROM productsdelivererjoin WHERE ID_delivererOffer = $offer_id";
@@ -148,4 +148,30 @@ function selectCountryDropbox(){
 
         } catch (Exception $ex) {
         }
+}
+
+function getOwnDeliverer($accID){
+    
+    return "SELECT do.id, do.name, c1.countryName as startCountry, do.startVillage, c2.countryName as destCountry, do.destinationVillage, do.startDate, prod.pr "
+                          . "FROM "
+                          . "(SELECT p.productname as pr, d.ID "
+                          . "FROM productsdelivererjoin pdj "
+                          . "join products p on pdj.ID_product = p.ID "
+                          . "join deliverer_offer d on pdj.ID_delivererOffer = d.ID) prod, deliverer_offer do "
+                          . "join countries c1 on do.startCountry = c1.id "
+                          . "join countries c2 on do.destinationCountry = c2.ID "
+                          . "WHERE prod.ID = do.ID AND do.responsibleAcc = $accID";
+}
+
+function getOwnOrga($accID){
+    
+    return "SELECT oo.id, oo.name, c1.countryName as startCountry, oo.startVillage, c2.countryName as destCountry, oo.destinationVillage, oo.startDate, prod.pr "
+                          . "FROM "
+                          . "(SELECT p.productname as pr, o.ID "
+                          . "FROM productsorgajoin poj "
+                          . "join products p on poj.ID_product = p.ID "
+                          . "join organisation_offer o on poj.ID_organisationOffer = o.ID) prod, organisation_offer oo "
+                          . "join countries c1 on oo.startCountry = c1.id "
+                          . "join countries c2 on oo.destinationCountry = c2.ID "
+                          . "WHERE prod.ID = oo.ID AND oo.responsibleAcc = $accID";;
 }

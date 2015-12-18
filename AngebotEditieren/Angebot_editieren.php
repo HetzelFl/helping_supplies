@@ -1,6 +1,6 @@
 <?php
 
-include '../dbConnect.php';
+include '../includes/dbConnectPDO.php';
 
 function edit_Offer( $table, $id, $name, $contact, $eMail, $startCountry, $startVillage,
                         $destinationCountry, $destinationVillage, $startDate, $endDate, $products)

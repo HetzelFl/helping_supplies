@@ -2,13 +2,21 @@
 
 $root = $_SERVER['DOCUMENT_ROOT'];
 //include head and header
-include_once ($root . "/PAUL/Template/template/head.php");
-include_once ($root . "/PAUL/Template/template/header.php");   
+include_once ($root . "/helping_supplies/template/head.php");
+include_once ($root . "/helping_supplies/template/header.php");   
 ?>    
 <div class="container">
         <form onSubmit="return" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
 
             <p></p>
+            <?php
+            if($table == 'deliverer_offer'){
+                echo "<h2>Privatpersonen Angebote</h2>";
+            }
+            else{
+               echo "<h2>Organisation Angebote</h2>"; 
+            }
+            ?>
             <div class="columns five">
             <?php
             if($table == 'organisation_offer'){
@@ -171,7 +179,7 @@ include_once ($root . "/PAUL/Template/template/header.php");
 </div>
 <?php
 // include footer
-include_once ($root . "/PAUL/Template/template/footer.php");
+include_once ($root . "/helping_supplies/template/footer.php");
 
 ?>
 

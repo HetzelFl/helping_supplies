@@ -7,8 +7,8 @@
             <li><a href='#'>Start</a></li>
             <li class='has-sub'><a href='#'>Angebote</a>
                 <ul>
-                    <li><a href='#'>von Organisationen</a></li>
-                    <li><a href='#'>von Privat</a></li>
+                    <li><a href='../showOffer/orgaAngebotAuflisten.php'>von Organisationen</a></li>
+                    <li><a href='../showOffer/deliverAngebotAuflisten.php'>von Privat</a></li>
 
                 </ul>
             </li>
@@ -17,10 +17,10 @@
  
                     <li class='has-sub'><a href='#'>Einstellen</a>
                         <ul>
-                    <li><a href='#'>von Organisation</a></li>
-                    <li><a href='#'>von Privat</a></li>
+                            <li><a href='../AngebotErstellen/create_Offer_Orga_HTML.php'>von Organisation</a></li>
+                            <li><a href='../AngebotErstellen/create_Offer_Deliver_HTML.php'>von Privat</a></li>
                         </ul>
-                    <li><a href='#'>Auflisten</a></li>
+                    <li><a href='../AngebotEditieren/list_Own_Orga.php'>Auflisten</a></li>
                 </ul>
             </li>
             <li><a href='#'>Account</a></li>
