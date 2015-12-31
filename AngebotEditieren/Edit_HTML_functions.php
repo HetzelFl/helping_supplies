@@ -22,13 +22,6 @@ global $startDate;
 global $endDate;
 global $products;
 
-function test_input($data) {
-   $data = trim($data);
-   $data = stripslashes($data);
-   $data = htmlspecialchars($data);
-   return $data;
-}
-
 function checkBoxProductsFilled($offer_id){
     
     global $db;

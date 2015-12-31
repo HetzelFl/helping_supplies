@@ -166,13 +166,13 @@ include_once ($root . "/helping_supplies/template/header.php");
             
             <div class="columns five">
             Welches Produkt: 
-            <p>        
+                    
                     <?php      
                         checkBoxProductsFilled($id);
                     ?>
             
-                <span class="error"> <?php echo $productErr;?></span>
-                <p>
+                <p><span class="error"> <?php echo $productErr;?></span></p>
+                
             <input type="submit" />
             </div>
         </form>

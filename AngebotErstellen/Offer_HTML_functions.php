@@ -22,13 +22,6 @@ global $startDate;
 global $endDate;
 global $products;
 
-function test_input($data) {
-   $data = trim($data);
-   $data = stripslashes($data);
-   $data = htmlspecialchars($data);
-   return $data;
-}
-
 function checkBoxProducts(){
     
     global $db;
@@ -76,7 +69,7 @@ function selectCountryDropbox(){
 
         foreach ( $db->query($statementStartC) as $row){
 
-            echo "<option value=$row[countryname]>$row[countryname]</option>\n";
+            echo "<option value='" .$row["countryname"]. "'>" .$row["countryname"]. "</option>\n";
         }
 
         } catch (Exception $ex) {

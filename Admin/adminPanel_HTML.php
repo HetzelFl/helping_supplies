@@ -29,7 +29,7 @@ include './adminPanelFunctions.php';
             <?php
             if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["startCountry"])){
                 
-                $startCountry = test_input($_POST["startCountry"]);
+                $startCountry = filterfunktion($_POST["startCountry"]);
                 
                 if( $_POST["startCountry"] != ""){
                     try{
@@ -67,8 +67,8 @@ include './adminPanelFunctions.php';
             if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["country"]) && isset($_POST["abbreviation"])){
                 
                 //global $country, $abbreviation;
-                $country = test_input($_POST["country"]);
-                $abbreviation = test_input($_POST["abbreviation"]);
+                $country = filterfunktion($_POST["country"]);
+                $abbreviation = filterfunktion($_POST["abbreviation"]);
                 
                 if (preg_match("/^[a-zA-Z ]*$/",$abbreviation) && preg_match("/^[a-zA-Z ]*$/",$country)){
                     if( $_POST["country"] != "" && $_POST["abbreviation"] != "" ){
@@ -113,7 +113,7 @@ include './adminPanelFunctions.php';
             <?php
             if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["product"])){
                 
-                $product = test_input($_POST["product"]);
+                $product = filterfunktion($_POST["product"]);
                 
                 if( $_POST["product"] != ""){
                     try{
@@ -145,7 +145,7 @@ include './adminPanelFunctions.php';
             <?php
             if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["productAdd"])){
                 
-                $productAdd = test_input($_POST["productAdd"]);
+                $productAdd = filterfunktion($_POST["productAdd"]);
                 
                 if( $_POST["productAdd"] != ""){
                     try{

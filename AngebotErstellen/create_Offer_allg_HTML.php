@@ -4,9 +4,10 @@ $root = $_SERVER['DOCUMENT_ROOT'];
 include_once ($root . "/helping_supplies/template/head.php");
 include_once ($root . "/helping_supplies/template/header.php");
 
-include './Angebot_erstellen.php';
-include './Offer_HTML_functions.php';
-include './eingabeCheck.php';
+//include '../includes/functions.php';
+//include './Angebot_erstellen.php';
+//include './Offer_HTML_functions.php';
+//include './eingabeCheck.php';
 
 $id = 1;
 
@@ -102,12 +103,12 @@ $id = 1;
             </div>
             <div class="columns five">
             Welches Produkt: 
-                <p>   
+                   
                     <?php      
                         checkBoxProducts();
                     ?>
-                <span class="error"> <?php echo $productErr;?></span>
-                </p>
+                <p><span class="error"> <?php echo $productErr;?></span></p>
+                
                 <input type="submit" />
             </div>
             

@@ -13,7 +13,7 @@ global $productAdd;
 
 global $countryErr;
 
-function test_input($data) {
+function filterfunktion($data) {
    $data = trim($data);
    $data = stripslashes($data);
    $data = htmlspecialchars($data);

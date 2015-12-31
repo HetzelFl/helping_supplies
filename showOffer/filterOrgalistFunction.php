@@ -10,7 +10,7 @@ function filterNone(){
                           . 'join organisation_offer o on poj.ID_organisationOffer = o.ID) prod, organisation_offer oo '
                           . 'join countries c1 on oo.startCountry = c1.id '
                           . 'join countries c2 on oo.destinationCountry = c2.ID '
-                          . 'WHERE prod.ID = oo.ID';
+                          . 'WHERE prod.ID = oo.ID AND startDate >= Curdate()';
 }
 
 function filterStartCountry($startCountry){
@@ -23,7 +23,8 @@ function filterStartCountry($startCountry){
                           . "join organisation_offer o on poj.ID_organisationOffer = o.ID) prod, organisation_offer oo "
                           . "join countries c1 on oo.startCountry = c1.id "
                           . "join countries c2 on oo.destinationCountry = c2.ID "
-                          . "WHERE prod.ID = oo.ID AND startCountry = (Select ID FROM countries where countryName = '$startCountry')";
+                          . "WHERE prod.ID = oo.ID AND startCountry = (Select ID FROM countries where countryName = '$startCountry') "
+                          . "AND startDate >= Curdate()";
 }
 
 function filterDestCountry($destCountry){
@@ -36,7 +37,8 @@ function filterDestCountry($destCountry){
                           . "join organisation_offer o on poj.ID_organisationOffer = o.ID) prod, organisation_offer oo "
                           . "join countries c1 on oo.startCountry = c1.id "
                           . "join countries c2 on oo.destinationCountry = c2.ID "
-                          . "WHERE prod.ID = oo.ID AND destinationCountry = (Select ID FROM countries where countryName = '$destCountry')";
+                          . "WHERE prod.ID = oo.ID AND destinationCountry = (Select ID FROM countries where countryName = '$destCountry')"
+                          . "AND startDate >= Curdate()";
 }
 
 function filterDatespan($lowerDate, $upperDate){
@@ -49,7 +51,8 @@ function filterDatespan($lowerDate, $upperDate){
                           . "join organisation_offer o on poj.ID_organisationOffer = o.ID) prod, organisation_offer oo "
                           . "join countries c1 on oo.startCountry = c1.id "
                           . "join countries c2 on oo.destinationCountry = c2.ID "
-                          . "WHERE prod.ID = oo.ID AND startDate >= $lowerDate AND endDate >= $upperDate";
+                          . "WHERE prod.ID = oo.ID AND startDate >= $lowerDate AND endDate >= $upperDate "
+                          . "AND startDate >= Curdate()";
 }
 
 

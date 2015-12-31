@@ -1,5 +1,7 @@
 <?php
 
+//include '../includes/functions.php';
+
         $postOK = true;
             
             if ($_SERVER["REQUEST_METHOD"] == "POST"){
@@ -13,7 +15,7 @@
                     $postOK = false;
                     $nameErr = "Bitte nur Buchstaben und Leerzeichen eingeben";
                 }
-                $name = test_input($_POST["name"]);
+                $name = filterfunktion($_POST["name"]);
                 
                 //ANSPRECHPARTNER------------------------------
                 if (isset($_POST["contact"])){
@@ -21,12 +23,12 @@
                         $postOK = false;
                         $contactErr = "Bitte nur Buchstaben und Leerzeichen eingeben";
                     }
-                    $contact = test_input($_POST["contact"]);
+                    $contact = filterfunktion($_POST["contact"]);
                 }
                 
                 //eMAIL---------------------------------
                 
-                $eMail = test_input($_POST["eMail"]);
+                $eMail = filterfunktion($_POST["eMail"]);
                 
                 //STARTCOUNTRY---------------------------------
                 if( $_POST["startCountry"] == ""){
@@ -35,7 +37,7 @@
                 $postOK = false;    
                 }
 
-                $startCountry = test_input($_POST["startCountry"]);
+                $startCountry = filterfunktion($_POST["startCountry"]);
                 
                 
                 //STARTVILLAGE---------------------------------
@@ -47,7 +49,7 @@
                         $startVErr = "Bitte nur Buchstaben und Leerzeichen eingeben";
                     }
                 
-                $startVillage = test_input($_POST["startVillage"]);
+                $startVillage = filterfunktion($_POST["startVillage"]);
                 
 
                 //DESTINATIONCOUNTRY---------------------------------
@@ -56,7 +58,7 @@
                   $postOK = false;
                 }
 
-                $destCountry = test_input($_POST["destCountry"]);
+                $destCountry = filterfunktion($_POST["destCountry"]);
                     
                 //DESTINATIONVILLAGE---------------------------------
                 if(empty($_POST["destVillage"])){
@@ -68,7 +70,7 @@
                         $destVErr = "Bitte nur Buchstaben und Leerzeichen eingeben";
                 }
                 
-                $destVillage = test_input($_POST["destVillage"]);
+                $destVillage = filterfunktion($_POST["destVillage"]);
                 
 
                 //STARTDATE---------------------------------
@@ -82,7 +84,7 @@
                 else{
                     $startDateErr = "Bitte gültiges Datum eingeben (tt.mm.yyyy)";
                     $postOK = false;
-                    $startDate = test_input($_POST["startDate"]);
+                    $startDate = filterfunktion($_POST["startDate"]);
                 }        
 
                 //ENDDATE---------------------------------
@@ -96,7 +98,7 @@
                 else{
                     $endDateErr = "Bitte gültiges Datum eingeben (tt.mm.yyyy)";
                     $postOK = false;
-                    $endDate = test_input($_POST["endDate"]);
+                    $endDate = filterfunktion($_POST["endDate"]);
                 }
                 
                 //DATECHECK--------------------------------

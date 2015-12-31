@@ -10,7 +10,7 @@ function filterNone(){
                           . 'join deliverer_offer d on pdj.ID_delivererOffer = d.ID) prod, deliverer_offer do '
                           . 'join countries c1 on do.startCountry = c1.id '
                           . 'join countries c2 on do.destinationCountry = c2.ID '
-                          . 'WHERE prod.ID = do.ID';
+                          . 'WHERE prod.ID = do.ID AND startDate >= Curdate()';
 }
 
 function filterStartCountry($startCountry){
@@ -23,7 +23,8 @@ function filterStartCountry($startCountry){
                           . "join deliverer_offer d on pdj.ID_delivererOffer = d.ID) prod, deliverer_offer do "
                           . "join countries c1 on do.startCountry = c1.id "
                           . "join countries c2 on do.destinationCountry = c2.ID "
-                          . "WHERE prod.ID = do.ID AND startCountry = (Select ID FROM countries where countryName = $startCountry)";
+                          . "WHERE prod.ID = do.ID AND startCountry = (Select ID FROM countries where countryName = $startCountry) "
+                          . "AND startDate >= Curdate()";
 }
 
 function filterDestCountry($destCountry){
@@ -36,7 +37,8 @@ function filterDestCountry($destCountry){
                           . "join deliverer_offer d on pdj.ID_delivererOffer = d.ID) prod, deliverer_offer do "
                           . "join countries c1 on do.startCountry = c1.id "
                           . "join countries c2 on do.destinationCountry = c2.ID "
-                          . "WHERE prod.ID = do.ID AND destinationCountry = (Select ID FROM countries where countryName = $destCountry)";
+                          . "WHERE prod.ID = do.ID AND destinationCountry = (Select ID FROM countries where countryName = $destCountry) "
+                          . "AND startDate >= Curdate()";
 }
 
 function filterDatespan($lowerDate, $upperDate){
@@ -49,5 +51,6 @@ function filterDatespan($lowerDate, $upperDate){
                           . "join deliverer_offer d on pdj.ID_delivererOffer = d.ID) prod, deliverer_offer do "
                           . "join countries c1 on do.startCountry = c1.id "
                           . "join countries c2 on do.destinationCountry = c2.ID "
-                          . "WHERE prod.ID = do.ID AND startDate >= $lowerDate AND endDate >= $upperDate";
+                          . "WHERE prod.ID = do.ID AND startDate >= $lowerDate AND endDate >= $upperDate "
+                          . "AND startDate >= Curdate()";
 }

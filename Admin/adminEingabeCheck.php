@@ -13,7 +13,7 @@ $product;
                 $postOK = false;    
                 }
 
-                $startCountry = test_input($_POST["startCountry"]);
+                $startCountry = filterfunktion($_POST["startCountry"]);
 /*
                 //PRODUCTS---------------------------------
                 if(empty($_POST["productChoice"])){
