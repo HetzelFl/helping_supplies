@@ -33,7 +33,6 @@
 <?php
 //Infobox anzeigen
 // Wenn nicht im registration Verzeichnis
-
 if (strpos(getcwd(),'registration') == false) {
     //Wenn nicht eingelogt
     if (!isset($_SESSION['accountsId'])) {
