@@ -33,7 +33,6 @@ if ($_SESSION['accountsActivation'] == $accountsActivation) {
     $sql = "UPDATE `accounts` SET `activation`='" . $Aktivierungscode . "' WHERE ID ='" . $_SESSION['accountsId'] . "'";
     mysqli_query($db_link, $sql);
     $_SESSION['accountsActivation'] = $Aktivierungscode;
-    
 }  else {
     //Wenn Cookie gestohlen oder veraltet
     session_destroy();
