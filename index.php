@@ -10,6 +10,11 @@ include($root . "/helping_supplies/template/infobox.php");
 ?>
 
 <div class="container">
+    <h1> Die Session ID lautet: 
+        <?php
+        echo $_SESSION['accountsId'];
+        ?>
+    </h1>
     <h1>Responsive Template 01</h1>
 
     <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
