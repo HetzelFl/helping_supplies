@@ -14,7 +14,7 @@
             </li>
             <li class='has-sub'><a href='#'>Eigene Angebote</a>
                 <ul>
- 
+
                     <li class='has-sub'><a href='#'>Einstellen</a>
                         <ul>
                             <li><a href='../AngebotErstellen/create_Offer_Orga_HTML.php'>von Organisation</a></li>
@@ -29,3 +29,10 @@
         </ul>
     </div>
 </div>
+
+<?php
+//Wenn nicht eingelogt:
+if (!isset($_SESSION['accountsId'])) {
+    include($root . "/helping_supplies/template/infobox.php");
+}
+?>
