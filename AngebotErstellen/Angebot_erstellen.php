@@ -3,7 +3,7 @@
 include '../includes/dbConnectPDO.php';
 
 function create_Offer( $table, $name, $contact, $eMail, $startCountry, $startVillage,
-                        $destinationCountry, $destinationVillage, $startDate, $endDate, $products)
+                        $destinationCountry, $destinationVillage, $startDate, $endDate, $products, $accountID)
 {
     global $db;
     
@@ -40,13 +40,13 @@ function create_Offer( $table, $name, $contact, $eMail, $startCountry, $startVil
             $statement1 = $db->prepare("INSERT INTO $tableName1 "
                 . "                 ($cName, $cContact, $ceMail, $cStartC, $cstartV, $cdestC, $cdestV, $cdateStart, $cdateEnd, $crespAcc) VALUES(?,?,?,?,?,?,?,?,?,?)");
             $statement1->execute(array($name, $contact, $eMail, $startCountry1, $startVillage,
-                            $destinationCountry1, $destinationVillage, $startDate, $endDate, /*$_SESSION["accountID"]*/ 1 ));
+                            $destinationCountry1, $destinationVillage, $startDate, $endDate, $accountID ));
         }
         else{
             $statement1 = $db->prepare("INSERT INTO $tableName1 "
                 . "                 ($cName, $ceMail, $cStartC, $cstartV, $cdestC, $cdestV, $cdateStart, $cdateEnd, $crespAcc) VALUES(?,?,?,?,?,?,?,?,?)");
             $statement1->execute(array($name, $eMail, $startCountry1, $startVillage,
-                            $destinationCountry1, $destinationVillage, $startDate, $endDate, /*$_SESSION["accountID"]*/ 1 ));
+                            $destinationCountry1, $destinationVillage, $startDate, $endDate, $accountID ));
         }
         //TODO /*$_SESSION["accountID"]*/ (siehe Zeile darüber)
         $lastInsertID = $db->lastInsertId();

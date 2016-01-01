@@ -57,7 +57,8 @@ include '../includes/dbConnectPDO.php';
                                                   
                           }while(true);
                           echo "</td>\n";
-                          echo "<td>" . "<a href=\"mailto.html/mail?\">kontaktieren </a></td>\n";
+                          //TODO Add offerID to link below
+                          echo "<td>" . "<a href= /helping_supplies/showOffer/showOffer.php>Info </a></td>\n";
                           echo "</tr>";  //$row['index'] the index here is a field name
                       }
                   }

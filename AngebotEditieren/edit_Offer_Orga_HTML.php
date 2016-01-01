@@ -1,7 +1,7 @@
 <?php
 
 //$id = $_POST['offerID'];
-$id = 9;
+$id = $_GET["id"];
 $table = 'organisation_offer';
 $noSubmit= true;
 include './Angebot_editieren.php';

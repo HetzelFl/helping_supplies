@@ -1,5 +1,5 @@
 <?php
-
+$accountID = $_SESSION['accountsId'];
 $root = $_SERVER['DOCUMENT_ROOT'];
 //include head and header
 include_once ($root . "/helping_supplies/template/head.php");
@@ -23,7 +23,7 @@ include './Edit_HTML_functions.php';
                           <th>Kontakt</th>
             </tr>
             <?php              
-                  $statement = getOwnDeliverer(1); //TODO 1 mit sessionID austauschen
+                  $statement = getOwnDeliverer($accountID);
                    $id = -1;
                    $counter = 0;
                    
@@ -31,7 +31,9 @@ include './Edit_HTML_functions.php';
                   $test->fetch();
                   foreach($iter=$db->query($statement) as $row)
                   /*while($row = mysql_fetch_array($result))*/
-                  {   //Creates a loop to loop through results                       
+                  {   //Creates a loop to loop through results
+                      //checks if the current row is the same offer but other product
+                      //if so, products will be listet in one column through do/while (see below)
                       if($id != htmlspecialchars($row['id'])){
                           $id = htmlspecialchars($row['id']);
                           echo "<tr align=\"left\">\n";
@@ -55,8 +57,9 @@ include './Edit_HTML_functions.php';
                             }
                                                   
                           }while(true);
+                  
                           echo "</td>\n";
-                          echo "<td>" . "<a href=\"mailto.html/mail?\">kontaktieren </a></td>\n";
+                          echo "<td>" . "<a href= /helping_supplies/AngebotEditieren/edit_Offer_Deliver_HTML.php?id=$id>Editieren</a></td>\n";
                           echo "</tr>";  //$row['index'] the index here is a field name
                       }
                   }

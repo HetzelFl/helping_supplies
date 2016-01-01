@@ -1,7 +1,8 @@
 <?php
+
 $table = 'organisation_offer';
 //$id = $_POST['offerID'];
-$id = 1;
+$id = $_SESSION['accountsId'];
 
 include '../includes/functions.php';
 include './Angebot_erstellen.php';
@@ -12,7 +13,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
 
     if($postOK){
         try{
-        create_Offer($table, $name, $contact, $eMail, $startCountry, $startVillage, $destCountry, $destVillage, reformDate($startDate), reformDate($endDate), $products);
+        create_Offer($table, $name, $contact, $eMail, $startCountry, $startVillage, $destCountry, $destVillage, reformDate($startDate), reformDate($endDate), $products, $id);
         //TO DO leere.php ersetzen mit Auflistung der eingegebenen Daten
         header('Location: leere.php');
         }

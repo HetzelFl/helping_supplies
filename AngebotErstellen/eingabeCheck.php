@@ -1,7 +1,5 @@
 <?php
 
-//include '../includes/functions.php';
-
         $postOK = true;
             
             if ($_SERVER["REQUEST_METHOD"] == "POST"){

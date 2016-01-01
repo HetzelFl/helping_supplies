@@ -9,7 +9,7 @@ include_once ($root . "/helping_supplies/template/header.php");
 //include './Offer_HTML_functions.php';
 //include './eingabeCheck.php';
 
-$id = 1;
+$id = $_SESSION['accountsId'];
 
 
 
