@@ -12,6 +12,7 @@ global $endDateErr;
 global $productErr;
 global $name; 
 global $contact;
+global $text;
 $contact = NULL;
 global $eMail;
 global $startCountry;

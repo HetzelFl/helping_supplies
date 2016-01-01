@@ -1,18 +1,20 @@
 <?php
 
-//$id = $_POST['offerID'];
-$id = $_GET["id"];
+if(isset($_GET["id"]))
+    $id = $_GET["id"];
 $table = 'organisation_offer';
 $noSubmit= true;
+include '../includes/functions.php';
 include './Angebot_editieren.php';
 include './Edit_HTML_functions.php';
 include '../AngebotErstellen/eingabeCheck.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST"){
-    $noSubmit = false;
+    
+    $id = $_POST["id"];
     if($postOK){
         try{
-        edit_Offer($table, $id, $name, $contact, $eMail, $startCountry, $startVillage, $destCountry, $destVillage, reformDatetoDB($startDate), reformDatetoDB($endDate), $products);
+        edit_Offer($table, $id, $name, $contact, $eMail, $startCountry, $startVillage, $destCountry, $destVillage, reformDatetoDB($startDate), reformDatetoDB($endDate), $products, $text);
         //TO DO leere.php ersetzen mit Auflistung der eingegebenen Daten
         header('Location: leere.php');
 

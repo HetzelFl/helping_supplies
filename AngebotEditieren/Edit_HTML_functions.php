@@ -121,10 +121,10 @@ function reformDatetoDB($date){
     
     return (new DateTime($date))->format('Y-m-d');
 }
-
+/*
 function reformDatetoNormal($date){
     return (new DateTime($date))->format('d.m.Y');
-}
+}*/
 
 //function must be placed between <select><\select>
 function selectCountryDropbox(){
@@ -145,7 +145,7 @@ function selectCountryDropbox(){
 
 function getOwnDeliverer($accID){
     
-    return "SELECT do.id, do.name, c1.countryName as startCountry, do.startVillage, c2.countryName as destCountry, do.destinationVillage, do.startDate, prod.pr "
+    return "SELECT do.id, do.offerer, c1.countryName as startCountry, do.startVillage, c2.countryName as destCountry, do.destinationVillage, do.startDate, prod.pr "
                           . "FROM "
                           . "(SELECT p.productname as pr, d.ID "
                           . "FROM productsdelivererjoin pdj "
@@ -158,7 +158,7 @@ function getOwnDeliverer($accID){
 
 function getOwnOrga($accID){
     
-    return "SELECT oo.id, oo.name, c1.countryName as startCountry, oo.startVillage, c2.countryName as destCountry, oo.destinationVillage, oo.startDate, prod.pr "
+    return "SELECT oo.id, oo.offerer, c1.countryName as startCountry, oo.startVillage, c2.countryName as destCountry, oo.destinationVillage, oo.startDate, prod.pr "
                           . "FROM "
                           . "(SELECT p.productname as pr, o.ID "
                           . "FROM productsorgajoin poj "

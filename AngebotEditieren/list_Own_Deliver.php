@@ -1,11 +1,14 @@
 <?php
-$accountID = $_SESSION['accountsId'];
+//$id = 1;
 $root = $_SERVER['DOCUMENT_ROOT'];
 //include head and header
 include_once ($root . "/helping_supplies/template/head.php");
 include_once ($root . "/helping_supplies/template/header.php");
 
+$accountID = $_SESSION['accountsId'];
+
 include '../includes/dbConnectPDO.php';
+include '../includes/functions.php';
 include './Edit_HTML_functions.php';
 ?>
 <div class="container">
@@ -37,7 +40,7 @@ include './Edit_HTML_functions.php';
                       if($id != htmlspecialchars($row['id'])){
                           $id = htmlspecialchars($row['id']);
                           echo "<tr align=\"left\">\n";
-                          echo "<td>" . htmlspecialchars($row['name']) . "</td>\n";
+                          echo "<td>" . htmlspecialchars($row['offerer']) . "</td>\n";
                           echo "<td>" . htmlspecialchars($row['startCountry']) . "</td>\n";
                           echo "<td>" . htmlspecialchars($row['startVillage']) . "</td>\n";
                           echo "<td>" . htmlspecialchars($row['destCountry']) . "</td>\n";

@@ -2,7 +2,7 @@
 
 function filterNone(){
     
-    return 'SELECT do.id, do.name, c1.countryName as startCountry, do.startVillage, c2.countryName as destCountry, do.destinationVillage, do.startDate, prod.pr '
+    return 'SELECT do.id, do.offerer, c1.countryName as startCountry, do.startVillage, c2.countryName as destCountry, do.destinationVillage, do.startDate, prod.pr '
                           . 'FROM '
                           . '(SELECT p.productname as pr, d.ID '
                           . 'FROM productsdelivererjoin pdj '
@@ -15,7 +15,7 @@ function filterNone(){
 
 function filterStartCountry($startCountry){
     
-        return "SELECT do.id, do.name, c1.countryName as startCountry, do.startVillage, c2.countryName as destCountry, do.destinationVillage, do.startDate, prod.pr "
+        return "SELECT do.id, do.offerer, c1.countryName as startCountry, do.startVillage, c2.countryName as destCountry, do.destinationVillage, do.startDate, prod.pr "
                           . "FROM "
                           . "(SELECT p.productname as pr, d.ID "
                           . "FROM productsdelivererjoin pdj "
@@ -29,7 +29,7 @@ function filterStartCountry($startCountry){
 
 function filterDestCountry($destCountry){
     
-        return "SELECT do.id, do.name, c1.countryName as startCountry, do.startVillage, c2.countryName as destCountry, do.destinationVillage, do.startDate, prod.pr "
+        return "SELECT do.id, do.offerer, c1.countryName as startCountry, do.startVillage, c2.countryName as destCountry, do.destinationVillage, do.startDate, prod.pr "
                           . "FROM "
                           . "(SELECT p.productname as pr, d.ID "
                           . "FROM productsdelivererjoin pdj "
@@ -43,7 +43,7 @@ function filterDestCountry($destCountry){
 
 function filterDatespan($lowerDate, $upperDate){
     
-        return "SELECT do.id, do.name, c1.countryName as startCountry, do.startVillage, c2.countryName as destCountry, do.destinationVillage, do.startDate, prod.pr "
+        return "SELECT do.id, do.offerer, c1.countryName as startCountry, do.startVillage, c2.countryName as destCountry, do.destinationVillage, do.startDate, prod.pr "
                           . "FROM "
                           . "(SELECT p.productname as pr, d.ID "
                           . "FROM productsdelivererjoin pdj "

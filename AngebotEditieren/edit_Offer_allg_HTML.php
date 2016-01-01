@@ -23,7 +23,7 @@ include_once ($root . "/helping_supplies/template/header.php");
             echo "Ihr Organame: <p><input type=\"text\" name=\"name\" value=\"";
                                 
                 if(!isset($_POST['name']))
-                    echo getColumnData($id, 'name')."\">";
+                    echo getColumnData($id, 'offerer')."\">";
                 else
                     echo $name."\">";
                 
@@ -173,7 +173,15 @@ include_once ($root . "/helping_supplies/template/header.php");
             
                 <p><span class="error"> <?php echo $productErr;?></span></p>
                 
-            <input type="submit" />
+            
+            </div>
+            <div class="columns five">
+                <textarea maxlength="3500" class="u-full-width" placeholder="Sonstige wichtige Information..." 
+                          id="exampleMessage" name="text"><?php if(!isset($_POST['textField']))
+                                                                    echo getColumnData($id, 'textField');
+                                                                else echo $text?></textarea>
+                <?php echo "<input type=\"hidden\" name=\"id\" value=$id />"; ?>
+                <input type="submit" />
             </div>
         </form>
 </div>
