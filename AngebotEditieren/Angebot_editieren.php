@@ -3,7 +3,7 @@
 include '../includes/dbConnectPDO.php';
 
 function edit_Offer( $table, $id, $name, $contact, $eMail, $startCountry, $startVillage,
-                        $destinationCountry, $destinationVillage, $startDate, $endDate, $products)
+                        $destinationCountry, $destinationVillage, $startDate, $endDate, $products, $text)
 {
     global $db;
     
@@ -19,7 +19,7 @@ function edit_Offer( $table, $id, $name, $contact, $eMail, $startCountry, $start
     $tableCountry = 'countries';
     //Colums for the table organisation_offer:
     $cID = 'ID';
-    $cName = 'name';
+    $cName = 'offerer';
     $cContact = 'contact';
     $ceMail = 'eMail';
     $cStartC = 'startCountry';
@@ -29,6 +29,7 @@ function edit_Offer( $table, $id, $name, $contact, $eMail, $startCountry, $start
     $cdateStart = 'startDate';
     $cdateEnd = 'endDate';
     $crespAcc = 'responsibleAcc';
+    $cText = 'textField';
     
     try{
         $statement00 = $db->prepare("SELECT ID FROM $tableCountry WHERE countryName LIKE '$startCountry'");
@@ -41,17 +42,17 @@ function edit_Offer( $table, $id, $name, $contact, $eMail, $startCountry, $start
         
         if($tableOffer == 'organisation_offer'){
             $statement1 = $db->prepare("UPDATE $tableOffer "
-                . "                 SET $cName=?, $cContact=?, $ceMail=?, $cStartC=?, $cstartV=?, $cdestC=?, $cdestV=?, $cdateStart=?, $cdateEnd=? "
+                . "                 SET $cName=?, $cContact=?, $ceMail=?, $cStartC=?, $cstartV=?, $cdestC=?, $cdestV=?, $cdateStart=?, $cdateEnd=?, $cText=? "
                     . "WHERE $cID=?");
             $statement1->execute(array($name, $contact, $eMail, $startCountry1, $startVillage,
-                            $destinationCountry1, $destinationVillage, $startDate, $endDate, $id ));
+                            $destinationCountry1, $destinationVillage, $startDate, $endDate, $text, $id ));
         }
         else{
             $statement1 = $db->prepare("UPDATE $tableOffer "
-                . "                 SET $cName=?, $ceMail=?, $cStartC=?, $cstartV=?, $cdestC=?, $cdestV=?, $cdateStart=?, $cdateEnd=? "
+                . "                 SET $cName=?, $ceMail=?, $cStartC=?, $cstartV=?, $cdestC=?, $cdestV=?, $cdateStart=?, $cdateEnd=?, $cText=? "
                     . "WHERE $cID=?");
             $statement1->execute(array($name, $eMail, $startCountry1, $startVillage,
-                            $destinationCountry1, $destinationVillage, $startDate, $endDate, $id ));
+                            $destinationCountry1, $destinationVillage, $startDate, $endDate, $text, $id ));
         }
 
         $statement2 = $db->prepare("DELETE FROM $tableJoinOfferProd WHERE $cJoinOfferID = $id");

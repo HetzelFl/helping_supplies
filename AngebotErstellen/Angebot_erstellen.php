@@ -3,7 +3,7 @@
 include '../includes/dbConnectPDO.php';
 
 function create_Offer( $table, $name, $contact, $eMail, $startCountry, $startVillage,
-                        $destinationCountry, $destinationVillage, $startDate, $endDate, $products, $accountID)
+                        $destinationCountry, $destinationVillage, $startDate, $endDate, $products, $accountID, $text)
 {
     global $db;
     
@@ -16,7 +16,7 @@ function create_Offer( $table, $name, $contact, $eMail, $startCountry, $startVil
     }
     $tableName3 = 'countries';
     //Colums for the table organisation_offer:
-    $cName = 'name';
+    $cName = 'offerer';
     $cContact = 'contact';
     $ceMail = 'eMail';
     $cStartC = 'startCountry';
@@ -26,6 +26,7 @@ function create_Offer( $table, $name, $contact, $eMail, $startCountry, $startVil
     $cdateStart = 'startDate';
     $cdateEnd = 'endDate';
     $crespAcc = 'responsibleAcc';
+    $cText = 'textField';
     
     try{
         $statement00 = $db->prepare("SELECT ID FROM $tableName3 WHERE countryName LIKE '$startCountry'");
@@ -38,15 +39,15 @@ function create_Offer( $table, $name, $contact, $eMail, $startCountry, $startVil
         
         if($tableName1 == 'organisation_offer'){
             $statement1 = $db->prepare("INSERT INTO $tableName1 "
-                . "                 ($cName, $cContact, $ceMail, $cStartC, $cstartV, $cdestC, $cdestV, $cdateStart, $cdateEnd, $crespAcc) VALUES(?,?,?,?,?,?,?,?,?,?)");
+                . "                 ($cName, $cContact, $ceMail, $cStartC, $cstartV, $cdestC, $cdestV, $cdateStart, $cdateEnd, $crespAcc, $cText) VALUES(?,?,?,?,?,?,?,?,?,?,?)");
             $statement1->execute(array($name, $contact, $eMail, $startCountry1, $startVillage,
-                            $destinationCountry1, $destinationVillage, $startDate, $endDate, $accountID ));
+                            $destinationCountry1, $destinationVillage, $startDate, $endDate, $accountID, $text ));
         }
         else{
             $statement1 = $db->prepare("INSERT INTO $tableName1 "
-                . "                 ($cName, $ceMail, $cStartC, $cstartV, $cdestC, $cdestV, $cdateStart, $cdateEnd, $crespAcc) VALUES(?,?,?,?,?,?,?,?,?)");
+                . "                 ($cName, $ceMail, $cStartC, $cstartV, $cdestC, $cdestV, $cdateStart, $cdateEnd, $crespAcc, $cText) VALUES(?,?,?,?,?,?,?,?,?,?)");
             $statement1->execute(array($name, $eMail, $startCountry1, $startVillage,
-                            $destinationCountry1, $destinationVillage, $startDate, $endDate, $accountID ));
+                            $destinationCountry1, $destinationVillage, $startDate, $endDate, $accountID, $text ));
         }
         //TODO /*$_SESSION["accountID"]*/ (siehe Zeile darüber)
         $lastInsertID = $db->lastInsertId();
@@ -59,6 +60,6 @@ function create_Offer( $table, $name, $contact, $eMail, $startCountry, $startVil
     }
     catch(Exception $e){
         
-        echo "Fehler beim Datenbankzugriff. Kontaktieren Sie den Administrator.";        
+        echo "Fehler beim Datenbankzugriff. Kontaktieren Sie den Administrator." . $e;        
     }
 }

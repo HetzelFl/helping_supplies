@@ -117,6 +117,10 @@
                 }
                 else
                     $products = $_POST["productChoice"];
+                
+                //TEXT---------------------------------
+                
+                $text = filterfunktion($_POST["text"]);
                                 
                 /*if($postOK){
                     try{

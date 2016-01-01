@@ -2,7 +2,7 @@
 
 function filterNone(){
     
-    return 'SELECT oo.id, oo.name, c1.countryName as startCountry, oo.startVillage, c2.countryName as destCountry, oo.destinationVillage, oo.startDate, prod.pr '
+    return 'SELECT oo.id, oo.offerer, c1.countryName as startCountry, oo.startVillage, c2.countryName as destCountry, oo.destinationVillage, oo.startDate, prod.pr '
                           . 'FROM '
                           . '(SELECT p.productname as pr, o.ID '
                           . 'FROM productsorgajoin poj '
@@ -15,7 +15,7 @@ function filterNone(){
 
 function filterStartCountry($startCountry){
     
-    return "SELECT oo.id, oo.name, c1.countryName as startCountry, oo.startVillage, c2.countryName as destCountry, oo.destinationVillage, oo.startDate, prod.pr "
+    return "SELECT oo.id, oo.offerer, c1.countryName as startCountry, oo.startVillage, c2.countryName as destCountry, oo.destinationVillage, oo.startDate, prod.pr "
                           . "FROM "
                           . "(SELECT p.productname as pr, o.ID "
                           . "FROM productsorgajoin poj "
@@ -29,7 +29,7 @@ function filterStartCountry($startCountry){
 
 function filterDestCountry($destCountry){
     
-    return "SELECT oo.id, oo.name, c1.countryName as startCountry, oo.startVillage, c2.countryName as destCountry, oo.destinationVillage, oo.startDate, prod.pr "
+    return "SELECT oo.id, oo.offerer, c1.countryName as startCountry, oo.startVillage, c2.countryName as destCountry, oo.destinationVillage, oo.startDate, prod.pr "
                           . "FROM "
                           . "(SELECT p.productname as pr, o.ID "
                           . "FROM productsorgajoin poj "
@@ -43,7 +43,7 @@ function filterDestCountry($destCountry){
 
 function filterDatespan($lowerDate, $upperDate){
     
-    return "SELECT oo.id, oo.name, c1.countryName as startCountry, oo.startVillage, c2.countryName as destCountry, oo.destinationVillage, oo.startDate, prod.pr "
+    return "SELECT oo.id, oo.offerer, c1.countryName as startCountry, oo.startVillage, c2.countryName as destCountry, oo.destinationVillage, oo.startDate, prod.pr "
                           . "FROM "
                           . "(SELECT p.productname as pr, o.ID "
                           . "FROM productsorgajoin poj "

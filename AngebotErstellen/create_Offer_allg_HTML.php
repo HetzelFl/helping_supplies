@@ -29,13 +29,23 @@ $id = $_SESSION['accountsId'];
             <?php 
             if($table == 'deliverer_offer'){
                 
-                echo "Ihr Name*: <p><input type=\"text\" name=\"name\" value=\"$name\" required=\"required\">" .
+                echo "Ihr Name*: <p><input type=\"text\" name=\"name\" value=\"";
+                if(isset($_POST["name"]))
+                        echo $name ."\" ";
+                else
+                    echo getAccountColumnData($id, 'name') ."\" ";
+                echo "required=\"required\">" .
                 "<span class=\"error\"> $nameErr</span>" .
                 "</p>";
             }
             else{
                 
-              echo "Ihre Organisation*: <p><input type=\"text\" name=\"name\" value=\"$name\" required=\"required\">" .
+              echo "Ihre Organisation*: <p><input type=\"text\" name=\"name\" value=\"";
+                if(isset($_POST["name"]))
+                        echo $name ."\" ";
+                else
+                    echo getAccountColumnData($id, 'name') ."\" ";
+                echo "required=\"required\">" .
                 "<span class=\"error\"> $nameErr</span>" .
                 "</p>";
               echo "Ansprechpartner: <p><input type=\"text\" name=\"contact\" value=\"$contact\"> " .
@@ -109,9 +119,12 @@ $id = $_SESSION['accountsId'];
                     ?>
                 <p><span class="error"> <?php echo $productErr;?></span></p>
                 
+                
+            </div>
+            <div class="columns five">
+                <textarea maxlength="3500" class="u-full-width" placeholder="Sonstige wichtige Information..." id="exampleMessage" name="text"><?php echo $text;?></textarea>
                 <input type="submit" />
             </div>
-            
         </form>
 </div>
 <?php
