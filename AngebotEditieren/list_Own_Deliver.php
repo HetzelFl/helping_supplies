@@ -23,9 +23,25 @@ include './Edit_HTML_functions.php';
                           <th>Startdatum</th>
                           <th>Produkt</th>
                           <th>Kontakt</th>
+                          <th>Löschen</th>
             </tr>
-            <?php              
-                  $statement = getOwnDeliverer($accountID);
+            <?php 
+            
+            if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["idDeliver"])) {
+
+                $offerID = filterfunktion($_POST["idDeliver"]);
+
+                if ($offerID != "") {
+                    try {
+                        deleteDeliverOffer($offerID, $accountID);
+                        //TO DO leere.php ersetzen mit Auflistung der eingegebenen Daten
+                        //header('Location: leere.php');
+                    } catch (Exception $e) {
+                        echo "Fehler beim Datenbankzugriff. Bitte dem Administrator Bescheid geben.";
+                    }
+                }
+            }
+            $statement = getOwnDeliverer($accountID);
                    $id = -1;
                    $counter = 0;
                    
@@ -38,6 +54,7 @@ include './Edit_HTML_functions.php';
                       //if so, products will be listet in one column through do/while (see below)
                       if($id != htmlspecialchars($row['id'])){
                           $id = htmlspecialchars($row['id']);
+                          echo "<form onSubmit=\"return\" action=\"" . htmlspecialchars($_SERVER["PHP_SELF"]) . "\" method=\"post\">";
                           echo "<tr align=\"left\">\n";
                           echo "<td>" . htmlspecialchars($row['offerer']) . "</td>\n";
                           echo "<td>" . htmlspecialchars($row['startCountry']) . "</td>\n";
@@ -62,7 +79,10 @@ include './Edit_HTML_functions.php';
                   
                           echo "</td>\n";
                           echo "<td>" . "<a href= /helping_supplies/AngebotEditieren/edit_Offer_Deliver_HTML.php?id=$id>Editieren</a></td>\n";
+                          echo "<td>" . "<input type=\"submit\" value=\"Löschen\" name=\"delete\"></td>\n";
                           echo "</tr>";  //$row['index'] the index here is a field name
+                          echo "<input name=idDeliver type=hidden value='" . htmlspecialchars($row['id']) . "'>";
+                          echo "</form>";
                       }
                   }
             ?>

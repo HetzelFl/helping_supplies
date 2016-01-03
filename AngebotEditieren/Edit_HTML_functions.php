@@ -137,3 +137,27 @@ function getOwnOrga($accID){
                           . "join countries c2 on oo.destinationCountry = c2.ID "
                           . "WHERE prod.ID = oo.ID AND oo.responsibleAcc = $accID";;
 }
+
+function deleteOrgaOffer($offerID, $accountID){
+    
+    global $db;
+
+    $statement = "DELETE FROM organisation_offer WHERE id = ? AND responsibleAcc = ?";
+
+    if ($db->prepare($statement)->execute(array($offerID, $accountID)))
+        return "ALL OK";
+    else
+        return "NOT OK";
+}
+
+function deleteDeliverOffer($offerID, $accountID){
+    
+    global $db;
+
+    $statement = "DELETE FROM deliverer_offer WHERE id = ? AND responsibleAcc = ?";
+
+    if ($db->prepare($statement)->execute(array($offerID, $accountID)))
+        return "ALL OK";
+    else
+        return "NOT OK";
+}
