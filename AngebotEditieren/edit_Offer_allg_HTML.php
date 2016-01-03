@@ -3,7 +3,13 @@
 $root = $_SERVER['DOCUMENT_ROOT'];
 //include head and header
 include_once ($root . "/helping_supplies/template/head.php");
-include_once ($root . "/helping_supplies/template/header.php");   
+include_once ($root . "/helping_supplies/template/header.php");
+
+$accountID = $_SESSION['accountsId'];
+
+if(getColumnData($id, 'responsibleAcc') != $accountID)
+    header("Location: /helping_supplies/index.php");
+
 ?>    
 <div class="container">
         <form onSubmit="return" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
