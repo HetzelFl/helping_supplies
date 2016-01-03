@@ -11,10 +11,21 @@ include($root . "/helping_supplies/template/header.php");
         echo $_SESSION['accountsId'];
         ?>
     </h1>
-    <h1>Responsive Template 01</h1>
-
-    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-    </p>
+    <h1>Come together - Help together!</h1>
+    <div class="block">
+        
+    <p>PAUL ist ein Gerät zur Wasseraufbereitung. Einige Hilfsorganisationen nutzen dieses, um frisches Wasser
+    in Gegenden mit einer schlechten Wasserqualität zu bringen. Leider liegen diese Orte manchmal so abgelegen, dass 
+    normale Lieferdienste die Lieferung nicht übernehmen können. Nun gibt es aber Menschen, die während einer Reise 
+    mit dem Rucksack an solch abgelegenen Orten vorbei kommen. Leider bekommen das die Organisationen so leicht nicht mit.</p>
+    <p>Jetzt kommt aber diese Seite ins Spiel: Organisationen können ihre Angebote eintragen und interessierte und hilfsbereite Reisende 
+    können darauf antworten. Im umgekehrten Fall können Reisende ihre Pläne eintragen und Organisationen können darauf reagieren 
+    und den Helfer kontaktieren.</p>
+    <p>Nach dem Motto "Come together - Help together" kommen hilsbereite Menschen zusammen und helfen gemeinsam diese Welt ein bisschen 
+    besser zu machen. Das Projekt war ursprünglich dazu gedacht nur das Hilsfgut PAUL zu unterstützen, weshalb diese Seite seinen Fokus 
+    auf dieses Produkt legt. Nichtsdestotrotz können Helfer und Organisationen auch andere Güter eintragen.</p>
+    <p>Mehr Informationen zu PAUL finden sie in den Links in der Fußzeile dieser Seite</p> 
+  </div>
 
     <hr>
 

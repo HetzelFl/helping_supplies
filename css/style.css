@@ -59,6 +59,14 @@
   text-align: center;
 }
 
+/*Block alignment
+-------------------------------------------- */
+
+.block { hyphens: auto; 
+        text-align: justify
+}
+
+
 /* Menu
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 
