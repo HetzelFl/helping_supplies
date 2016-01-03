@@ -17,10 +17,10 @@ $id = $_SESSION['accountsId'];
             <p></p>
             <?php
             if($table == 'deliverer_offer'){
-                echo "<h2>Privatpersonen Angebote</h2>";
+                echo "<h2>Lieferer Angebote</h2>";
             }
             else{
-               echo "<h2>Organisation Angebote</h2>"; 
+               echo "<h2>Bereitsteller Angebote</h2>"; 
             }
             ?>
             <div class="columns five">
@@ -78,9 +78,7 @@ $id = $_SESSION['accountsId'];
             <p><input type="text" name="startVillage" value="<?php echo $startVillage; ?>" required="required"/>
                 <span class="error"> <?php echo $startVErr;?></span>
             </p>
-            </div>
             
-            <div class="columns five">
             Das Zielland*:  
             
                 <p><select name="destCountry" required="required">
