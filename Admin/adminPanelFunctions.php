@@ -13,13 +13,6 @@ global $productAdd;
 
 global $countryErr;
 
-function filterfunktion($data) {
-   $data = trim($data);
-   $data = stripslashes($data);
-   $data = htmlspecialchars($data);
-   return $data;
-}
-
 //PRODUCTS-----------------------------------------------
 function selectProductDropbox(){
    
@@ -72,22 +65,6 @@ function addProduct($value){
 }
 
 //COUNTRIES-----------------------------------------------
-function selectCountryDropbox(){
-
-    try{
-        global $db;
-        
-        $statementStartC = "Select countryname from countries";
-
-        foreach ( $db->query($statementStartC) as $row){
-
-            echo "<option value=$row[countryname]>$row[countryname]</option>\n";
-        }
-    } catch (Exception $ex) {
-
-    }
-}
-
 function deleteCountry($value){
         try{
         global $db;
@@ -116,4 +93,54 @@ function addCountry($abbreviation, $name){
     } catch (Exception $ex) {
         echo "ERROR: " .$ex;
     }  
+}
+
+function getAllDeliverer(){
+    
+    return "SELECT do.id, do.offerer, c1.countryName as startCountry, do.startVillage, c2.countryName as destCountry, do.destinationVillage, do.startDate, prod.pr "
+                          . "FROM "
+                          . "(SELECT p.productname as pr, d.ID "
+                          . "FROM productsdelivererjoin pdj "
+                          . "join products p on pdj.ID_product = p.ID "
+                          . "join deliverer_offer d on pdj.ID_delivererOffer = d.ID) prod, deliverer_offer do "
+                          . "join countries c1 on do.startCountry = c1.id "
+                          . "join countries c2 on do.destinationCountry = c2.ID "
+                          . "WHERE prod.ID = do.ID";
+}
+
+function getAllOrga(){
+    
+    return "SELECT oo.id, oo.offerer, c1.countryName as startCountry, oo.startVillage, c2.countryName as destCountry, oo.destinationVillage, oo.startDate, prod.pr "
+                          . "FROM "
+                          . "(SELECT p.productname as pr, o.ID "
+                          . "FROM productsorgajoin poj "
+                          . "join products p on poj.ID_product = p.ID "
+                          . "join organisation_offer o on poj.ID_organisationOffer = o.ID) prod, organisation_offer oo "
+                          . "join countries c1 on oo.startCountry = c1.id "
+                          . "join countries c2 on oo.destinationCountry = c2.ID "
+                          . "WHERE prod.ID = oo.ID" ;
+}
+
+function deleteOrgaOffer($offerID){
+    
+    global $db;
+
+    $statement = "DELETE FROM organisation_offer WHERE id = ?";
+
+    if ($db->prepare($statement)->execute(array($offerID)))
+        return "ALL OK";
+    else
+        return "NOT OK";
+}
+
+function deleteDeliverOffer($offerID){
+    
+    global $db;
+
+    $statement = "DELETE FROM deliverer_offer WHERE id = ?";
+
+    if ($db->prepare($statement)->execute(array($offerID)))
+        return "ALL OK";
+    else
+        return "NOT OK";
 }

@@ -16,7 +16,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
         try{
         create_Offer($table, $name, $contact, $eMail, $startCountry, $startVillage, $destCountry, $destVillage, reformDatetoDB($startDate), reformDatetoDB($endDate), $products, $id, $text);
         //TO DO leere.php ersetzen mit Auflistung der eingegebenen Daten
-        //header('Location: leere.php');
+        header('Location: leere.php');
         }
         catch(Exception $e){
             
