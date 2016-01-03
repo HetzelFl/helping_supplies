@@ -11,8 +11,6 @@ include_once ($root . "/helping_supplies/template/header.php");
 
 $id = $_SESSION['accountsId'];
 
-
-
 ?>
 <div class="container">
         <form onSubmit="return" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
@@ -123,6 +121,7 @@ $id = $_SESSION['accountsId'];
             </div>
             <div class="columns five">
                 <textarea maxlength="3500" class="u-full-width" placeholder="Sonstige wichtige Information..." id="exampleMessage" name="text"><?php echo $text;?></textarea>
+                <?php echo "<input type=\"hidden\" name=\"id\" value=$id />"; ?>
                 <input type="submit" />
             </div>
         </form>

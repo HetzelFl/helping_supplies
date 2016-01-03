@@ -8,7 +8,6 @@ include_once ($root . "/helping_supplies/template/header.php");
 $accountID = $_SESSION['accountsId'];
 
 include '../includes/dbConnectPDO.php';
-include '../includes/functions.php';
 include './Edit_HTML_functions.php';
 ?>
 <div class="container">

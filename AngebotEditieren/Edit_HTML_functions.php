@@ -69,7 +69,7 @@ function checkBoxProductsFilled($offer_id){
                     echo "";
                 }
              
-                echo ">$row[productname]</p>\n";
+                echo "> $row[productname]</p>\n";
             }
         } catch (Exception $ex) {
         }
@@ -98,6 +98,7 @@ function getCountry($id){
     }  
 }
 
+//use to get data of column from organisation or deliverer offer table
 function getColumnData($id, $column){
     
     global $db;
@@ -109,38 +110,6 @@ function getColumnData($id, $column){
         
         return $row[$column];
     }
-}
-
-function validateDate($date, $format = 'd.m.Y')
-{
-    $d = DateTime::createFromFormat($format, $date);
-    return $d && $d->format($format) == $date;
-}
-
-function reformDatetoDB($date){
-    
-    return (new DateTime($date))->format('Y-m-d');
-}
-/*
-function reformDatetoNormal($date){
-    return (new DateTime($date))->format('d.m.Y');
-}*/
-
-//function must be placed between <select><\select>
-function selectCountryDropbox(){
-
-    try{
-        global $db;
-        
-        $statementStartC = "Select countryname from countries";
-
-        foreach ( $db->query($statementStartC) as $row){
-
-            echo "<option chevalue=$row[countryname]>$row[countryname]</option>\n";
-        }
-
-        } catch (Exception $ex) {
-        }
 }
 
 function getOwnDeliverer($accID){

@@ -10,11 +10,13 @@ include './eingabeCheck.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST"){
 
+    $id = $_POST["id"];
+    
     if($postOK){
         try{
-        create_Offer($table, $name, $contact, $eMail, $startCountry, $startVillage, $destCountry, $destVillage, reformDate($startDate), reformDate($endDate), $products, $id, $text);
+        create_Offer($table, $name, $contact, $eMail, $startCountry, $startVillage, $destCountry, $destVillage, reformDatetoDB($startDate), reformDatetoDB($endDate), $products, $id, $text);
         //TO DO leere.php ersetzen mit Auflistung der eingegebenen Daten
-        header('Location: leere.php');
+        //header('Location: leere.php');
         }
         catch(Exception $e){
             

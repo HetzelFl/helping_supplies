@@ -1,10 +1,14 @@
 <?php
 
+function test(){
+ echo "test";    
+}
+
 function filterfunktion($input){
-$input=strip_tags($input);
-$input=str_replace("\n", "", $input);
-$input=trim($input);
-return $input;
+    $input=strip_tags($input);
+    $input=str_replace("\n", "", $input);
+    $input=trim($input);
+    return $input;
 }
 
 function zufallsstring($laenge) {
@@ -23,8 +27,20 @@ function zufallsstring($laenge) {
    return $str;
 }
 
+//use to check user input for validation -> format d.m.Y
+function validateDate($date, $format = 'd.m.Y'){
+    $d = DateTime::createFromFormat($format, $date);
+    return $d && $d->format($format) == $date;
+}
+
+//use to transform database dateformat Y-m-d to d.m.Y
 function reformDatetoNormal($date){
     return (new DateTime($date))->format('d.m.Y');
+}
+
+//use to transform userinput date format d.m.Y to database format Y-m-d
+function reformDatetoDB($date){ 
+    return (new DateTime($date))->format('Y-m-d');
 }
 
 function orgaDeactivate($id){
@@ -35,9 +51,26 @@ function orgaDeactivate($id){
             . "SET startDate = '0000-00-00', endDate = '0000-00-00' "
             . "WHERE id = $id";
     
-    $db->query($statement);
-    
-    
+    $db->query($statement);   
+}
+
+//function must be placed between <select></select>
+//displays a dropbox with all countries
+function selectCountryDropbox(){
+
+    try{
+        global $db;
+        
+        $statementStartC = "Select countryname from countries";
+
+        foreach ( $db->query($statementStartC) as $row){
+
+            echo "<option value='" .$row["countryname"]. "'>" .$row["countryname"]. "</option>\n";
+        }
+
+        } catch (Exception $ex) {
+
+        }
 }
 
 function deliverDeactivate($id){
@@ -48,8 +81,6 @@ function deliverDeactivate($id){
             . "SET startDate = '0000-00-00', endDate = '0000-00-00' "
             . "WHERE id = $id";
     
-    $db->query($statement);
-    
-    
+    $db->query($statement);  
 }
 ?>

@@ -49,35 +49,6 @@ function checkBoxProducts(){
     
 }
 
-function validateDate($date, $format = 'd.m.Y')
-{
-    $d = DateTime::createFromFormat($format, $date);
-    return $d && $d->format($format) == $date;
-}
-
-function reformDate($date){
-    
-    return (new DateTime($date))->format('Y-m-d');
-}
-
-//function must be placed between <select><\select>
-function selectCountryDropbox(){
-
-    try{
-        global $db;
-        
-        $statementStartC = "Select countryname from countries";
-
-        foreach ( $db->query($statementStartC) as $row){
-
-            echo "<option value='" .$row["countryname"]. "'>" .$row["countryname"]. "</option>\n";
-        }
-
-        } catch (Exception $ex) {
-
-        }
-}
-
 function getAccountColumnData($id, $column){
     
     global $db;

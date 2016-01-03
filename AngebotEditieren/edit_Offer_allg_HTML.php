@@ -43,7 +43,7 @@ include_once ($root . "/helping_supplies/template/header.php");
                 echo "Ihr Name: <p><input type=\"text\" name=\"name\" value=\"";
                                 
                 if(!isset($_POST['name']))
-                    echo getColumnData($id, 'name')."\">";
+                    echo getColumnData($id, 'offerer')."\">";
                 else
                     echo $name."\">";
                 
