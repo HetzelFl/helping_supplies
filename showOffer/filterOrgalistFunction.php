@@ -13,37 +13,43 @@ $sqlStatement = "SELECT oo.id, oo.offerer, c1.countryName as startCountry, oo.st
 
 function filterNone(){
     
-    global  $sqlStatement;
+    global $sqlStatement;
     
     return $sqlStatement;
 }
 
 function filterStartCountry($startCountry){
     
-    global  $sqlStatement;
+    global $sqlStatement;
     
     return $sqlStatement . "AND startCountry = (Select ID FROM countries where countryName = '$startCountry')";
 }
 
 function filterDestCountry($destCountry){
     
-    global  $sqlStatement;
+    global $sqlStatement;
     
-    return $sqlStatement. "AND destinationCountry = (Select ID FROM countries where countryName = '$destCountry')";
+    return $sqlStatement . "AND destinationCountry = (Select ID FROM countries where countryName = '$destCountry')";
 }
 
 function filterDatespan($lowerDate, $upperDate){
     
-    global  $sqlStatement;
+    global $sqlStatement;
     
     return $sqlStatement. "AND startDate >= \"$lowerDate\" AND endDate <= \"$upperDate\"";
 }
 
 function filterName($value){
     
-    global  $sqlStatement;
+    global $sqlStatement;
     
     return $sqlStatement. "AND offerer LIKE \"%$value%\"";
+}
+
+function setLimit($startAt, $rowPerPage){
+    
+    return " ORDER BY oo.ID LIMIT $startAt, $rowPerPage";
+    
 }
 
 

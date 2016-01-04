@@ -157,7 +157,7 @@ include './adminPanelFunctions.php';
 <div class="container">
 
     <p></p>
-    <h3><u>Ihre Angebote als Bereitsteller</u></h3>
+    <h3><u>Die Angebote von Bereitsteller</u></h3>
     <table style="width: 100%">
         <tr align="left">
             <th>Organisation</th>
@@ -165,7 +165,7 @@ include './adminPanelFunctions.php';
             <th>Startdorf</th>
             <th>Zielland</th>
             <th>Zieldorf</th>
-            <th>Startdatum</th>
+            <th>Verfügbar ab</th>
             <th>Produkt</th>
             <th>Kontakt</th>
         </tr>
@@ -219,7 +219,7 @@ include './adminPanelFunctions.php';
                 } while (true);
 
                 echo "</td>\n";
-                echo "<td>" . "<input type=\"submit\" value=\"Löschen\" name=\"delete\"></td>\n";
+                echo "<td>" . "<input type=\"submit\" value=\"Löschen\" name=\"delete\" onclick=\"return confirm('Eintrag wirklich löschen?');this.parentNode.removeChild(this);\"></td>\n";
                 echo "</tr>";  //$row['index'] the index here is a field name
                 echo "<input name=idOrga type=hidden value='" . htmlspecialchars($row['id']) . "'>";
                 echo "</form>";
@@ -228,7 +228,7 @@ include './adminPanelFunctions.php';
         ?>
     </table>
 
-    <h3><u>Ihre Angebote als Lieferer</u></h3>
+    <h3><u>Die Angebote von Lieferer</u></h3>
     <table style="width: 100%">
         <tr align="left">
             <th>Name</th>
@@ -236,7 +236,7 @@ include './adminPanelFunctions.php';
             <th>Startdorf</th>
             <th>Zielland</th>
             <th>Zieldorf</th>
-            <th>Startdatum</th>
+            <th>Verfügbar ab</th>
             <th>Produkt</th>
             <th>Kontakt</th>
         </tr>
@@ -288,7 +288,7 @@ include './adminPanelFunctions.php';
                     }
                 } while (true);
                 echo "</td>\n";
-                echo "<td>" . "<input type=\"submit\" value=\"Löschen\" name=\"delete\"></td>\n";
+                echo "<td>" . "<input type=\"submit\" value=\"Löschen\" name=\"delete\" onclick=\"return confirm('Eintrag wirklich löschen?');this.parentNode.removeChild(this);\"></td>\n";
                 echo "</tr>";  //$row['index'] the index here is a field name
                 echo "<input name=idDeliver type=hidden value='" . htmlspecialchars($row['id']) . "'>";
                 echo "</form>";

@@ -20,7 +20,7 @@ include './Edit_HTML_functions.php';
                           <th>Startdorf</th>
                           <th>Zielland</th>
                           <th>Zieldorf</th>
-                          <th>Startdatum</th>
+                          <th>Verfügbar ab</th>
                           <th>Produkt</th>
                           <th>Kontakt</th>
                           <th>Löschen</th>
@@ -79,7 +79,7 @@ include './Edit_HTML_functions.php';
                   
                           echo "</td>\n";
                           echo "<td>" . "<a href= /helping_supplies/AngebotEditieren/edit_Offer_Deliver_HTML.php?id=$id>Editieren</a></td>\n";
-                          echo "<td>" . "<input type=\"submit\" value=\"Löschen\" name=\"delete\"></td>\n";
+                          echo "<td>" . "<input type=\"submit\" value=\"Löschen\" name=\"delete\" onclick=\"return confirm('Eintrag wirklich löschen?');this.parentNode.removeChild(this);\"></td>\n";
                           echo "</tr>";  //$row['index'] the index here is a field name
                           echo "<input name=idDeliver type=hidden value='" . htmlspecialchars($row['id']) . "'>";
                           echo "</form>";

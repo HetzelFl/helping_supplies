@@ -22,14 +22,14 @@ function filterStartCountry($startCountry){
     
     global $sqlStatement;
     
-    return $sqlStatement . "AND startCountry = (Select ID FROM countries where countryName = $startCountry)";
+    return $sqlStatement . "AND startCountry = (Select ID FROM countries where countryName = '$startCountry')";
 }
 
 function filterDestCountry($destCountry){
     
     global $sqlStatement;
     
-    return $sqlStatement . "AND destinationCountry = (Select ID FROM countries where countryName = $destCountry)";
+    return $sqlStatement . "AND destinationCountry = (Select ID FROM countries where countryName = '$destCountry')";
 }
 
 function filterDatespan($lowerDate, $upperDate){
@@ -44,4 +44,10 @@ function filterName($value){
     global  $sqlStatement;
     
     return $sqlStatement. "AND offerer LIKE \"%$value%\"";
+}
+
+function setLimit($startAt, $rowPerPage){
+    
+    return " ORDER BY do.ID LIMIT $startAt, $rowPerPage";
+    
 }

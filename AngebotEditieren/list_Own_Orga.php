@@ -9,6 +9,8 @@ $accountID = $_SESSION['accountsId'];
 
 include '../includes/dbConnectPDO.php';
 include './Edit_HTML_functions.php';
+
+
 ?>
 <div class="container">
     <p></p>
@@ -20,7 +22,7 @@ include './Edit_HTML_functions.php';
             <th>Startdorf</th>
             <th>Zielland</th>
             <th>Zieldorf</th>
-            <th>Startdatum</th>
+            <th>Verfügbar ab</th>
             <th>Produkt</th>
             <th>Kontakt</th>
             <th>Löschen</th>
@@ -73,8 +75,10 @@ include './Edit_HTML_functions.php';
                 } while (true);
 
                 echo "</td>\n";
-                echo "<td>" . "<a href= /helping_supplies/AngebotEditieren/edit_Offer_Orga_HTML.php?id=$id>Editieren</a></td>\n";
-                echo "<td>" . "<input type=\"submit\" value=\"Löschen\" name=\"delete\"></td>\n";
+                echo "<td>" . "<a href=\"/helping_supplies/AngebotEditieren/edit_Offer_Orga_HTML.php?id=$id\">Editieren</a></td>\n";
+                echo "<td>";
+                echo "<input type=\"submit\" value=\"Löschen\" name=\"delete\" onclick=\"return confirm('Eintrag wirklich löschen?');this.parentNode.removeChild(this);\">";
+                echo "</td>\n";
                 echo "</tr>";  //$row['index'] the index here is a field name
                 echo "<input name=idOrga type=hidden value='" . htmlspecialchars($row['id']) . "'>";
                 echo "</form>";
@@ -91,7 +95,7 @@ include './Edit_HTML_functions.php';
             <th>Startdorf</th>
             <th>Zielland</th>
             <th>Zieldorf</th>
-            <th>Startdatum</th>
+            <th>Verfügbar ab</th>
             <th>Produkt</th>
             <th>Kontakt</th>
             <th>Löschen</th>
@@ -143,8 +147,10 @@ include './Edit_HTML_functions.php';
                     }
                 } while (true);
                 echo "</td>\n";
-                echo "<td>" . "<a href= /helping_supplies/AngebotEditieren/edit_Offer_Deliver_HTML.php?id=$id>Editieren</a></td>\n";
-                echo "<td>" . "<input type=\"submit\" value=\"Löschen\" name=\"delete\"></td>\n";
+                echo "<td>" . "<a href=\"/helping_supplies/AngebotEditieren/edit_Offer_Deliver_HTML.php?id=$id\">Editieren</a></td>\n";
+                echo "<td>";
+                echo "<input type=\"submit\" value=\"Löschen\" name=\"delete\" onclick=\"return confirm('Eintrag wirklich löschen?');this.parentNode.removeChild(this);\">";
+                echo "</td>\n";
                 echo "</tr>";  //$row['index'] the index here is a field name
                 echo "<input name=idDeliver type=hidden value='" . htmlspecialchars($row['id']) . "'>";
                 echo "</form>";

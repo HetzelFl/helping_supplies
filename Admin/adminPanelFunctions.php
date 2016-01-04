@@ -105,7 +105,7 @@ function getAllDeliverer(){
                           . "join deliverer_offer d on pdj.ID_delivererOffer = d.ID) prod, deliverer_offer do "
                           . "join countries c1 on do.startCountry = c1.id "
                           . "join countries c2 on do.destinationCountry = c2.ID "
-                          . "WHERE prod.ID = do.ID";
+                          . "WHERE prod.ID = do.ID ORDER BY do.ID";
 }
 
 function getAllOrga(){
@@ -118,7 +118,7 @@ function getAllOrga(){
                           . "join organisation_offer o on poj.ID_organisationOffer = o.ID) prod, organisation_offer oo "
                           . "join countries c1 on oo.startCountry = c1.id "
                           . "join countries c2 on oo.destinationCountry = c2.ID "
-                          . "WHERE prod.ID = oo.ID" ;
+                          . "WHERE prod.ID = oo.ID ORDER BY oo.ID" ;
 }
 
 function deleteOrgaOffer($offerID){

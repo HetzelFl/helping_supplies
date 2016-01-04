@@ -83,4 +83,14 @@ function deliverDeactivate($id){
     
     $db->query($statement);  
 }
+
+function getDBEntryCount($table){
+    
+    global $db;
+    
+    $statement = "Select count(*) cnt FROM ($table) test ";
+    
+    foreach($db->query($statement) as $row)
+        return $row['cnt'];  
+}
 ?>
