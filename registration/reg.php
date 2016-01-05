@@ -4,6 +4,10 @@ $root = $_SERVER['DOCUMENT_ROOT'];
 include($root . "/helping_supplies/template/head.php");
 include($root . "/helping_supplies/template/header.php");
 
+//Keine Regestrierung wenn User bereits eingeloggt ist
+if (isset($_SESSION['accountsId'])) {
+    echo "<meta http-equiv=\"refresh\" content=\"0; URL=/helping_supplies/index.php\">";
+}
 //define variables and set to empty values
 $usernameErr = $nameErr = $eMailErr = $passwordErr = "";
 $ErrCounter = 1;
@@ -64,8 +68,8 @@ if (isset($_REQUEST['Send'])) {
         }
         //TODO aktivieren
         //mail($_REQUEST['EMail'], "Registrierung abschließen", "Hallo,\n\num die Registrierung abzuschließen, klicken Sie bitte auf den folgenden Link:\n\nhttp://www.ihre-domain.de/regestration/reg-aktivieren.php?ID=" . $ID . "&Aktivierungscode=" . $Aktivierungscode . "", "FROM: $Absender");
-        //echo "Hallo,\n\num die Registrierung abzuschließen, klicken Sie bitte auf den folgenden Link:\n\nhttp://www.ihre-domain.de/regestration/reg-aktivieren.php?ID=" . $ID . "&Aktivierungscode=" . $Aktivierungscode . "";
-        echo"Um die Registrierung abzuschließen, rufen Sie Ihr E-Mail-Postfach ab und klicken Sie auf den Aktivierungslink in der soeben an Sie versandten E-Mail.";
+        //echo "Hallo,\n\num die Registrierung abzuschließen, klicken Sie bitte auf den folgenden Link:\n\nhttp://www.ihre-domain.de/registration/reg-aktivieren.php?ID=" . $ID . "&Aktivierungscode=" . $Aktivierungscode . "";
+        echo "<meta http-equiv=\"refresh\" content=\"0; URL=/helping_supplies/index.php\">";
     }
 }
 if ($ErrCounter > 0) {

@@ -4,6 +4,10 @@ $root = $_SERVER['DOCUMENT_ROOT'];
 include($root . "/helping_supplies/template/head.php");
 include($root . "/helping_supplies/template/header.php");
 
+//Kein Login wenn User bereits eingeloggt ist
+if (isset($_SESSION['accountsId'])) {
+    echo "<meta http-equiv=\"refresh\" content=\"0; URL=/helping_supplies/index.php\">";
+}
 //define variables and set to empty values
 $ErrCounter = 0;
 $ErrMessage = "";

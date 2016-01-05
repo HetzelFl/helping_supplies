@@ -1,5 +1,9 @@
 <?php
 
+if (!isset($_REQUEST['ID']) OR !isset($_REQUEST['Aktivierungscode'])) {
+    echo "<meta http-equiv=\"refresh\" content=\"0; URL=/helping_supplies/index.php\">";
+}
+
 $root = $_SERVER['DOCUMENT_ROOT'];
 if ($_REQUEST['ID'] && $_REQUEST['Aktivierungscode']) {
     require_once ($root . "/helping_supplies/includes/dbConnect.php");
