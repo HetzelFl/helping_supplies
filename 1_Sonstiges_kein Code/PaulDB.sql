@@ -321,6 +321,14 @@ CREATE TABLE `deliverer_offer` (
   `textField` varchar(3500) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Daten für Tabelle `deliverer_offer`
+--
+
+INSERT INTO `deliverer_offer` (`ID`, `offerer`, `eMail`, `startCountry`, `startVillage`, `destinationCountry`, `destinationVillage`, `startDate`, `endDate`, `responsibleAcc`, `textField`) VALUES
+	(4, 'orga', 'usero@hfu.de', 6, 'sdfgsdfg', 4, 'asdgsadg', '1753-01-01', '1753-01-01', 1, 'asdgasdg'),
+	(5, 'orgaorga', 'usero@hfu.de', 6, 'sdfgsdfg', 4, 'asdgsadg', '2020-12-12', '2021-12-12', 2, 'asdgasdg');
+
 -- --------------------------------------------------------
 
 --
@@ -341,6 +349,27 @@ CREATE TABLE `organisation_offer` (
   `responsibleAcc` int(11) NOT NULL,
   `textField` varchar(3500) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Daten für Tabelle `organisation_offer`
+--
+
+INSERT INTO `organisation_offer` (`ID`, `offerer`, `contact`, `eMail`, `startCountry`, `startVillage`, `destinationCountry`, `destinationVillage`, `startDate`, `endDate`, `responsibleAcc`, `textField`) VALUES
+	(5, 'orga', 'sdagasdg', 'usero@hfu.de', 5, 'asdgsadg', 4, 'asdgsadg', '1753-01-01', '1753-01-01', 1, 'asdgasdgsdg'),
+	(6, 'orgaorga', 'asdgsadg', 'usero@hfu.de', 9, 'asdgasdgasdg', 12, 'asdgsdg', '2020-12-12', '2021-12-12', 2, 'asdgasdhsdfh'),
+	(7, 'orgaa', 'asdgasdg', 'usero@hfu.de', 7, 'asdgasdg', 14, 'asdgasdg', '2020-12-12', '2021-12-12', 1, 'asdgasdgasdg'),
+	(8, 'orgaaa', 'asdgasdg', 'usero@hfu.de', 7, 'asdgasdg', 14, 'asdgasdg', '2020-12-12', '2021-12-12', 1, 'asdgasdgasdg'),
+	(9, 'orgaaaa', 'asdgasdg', 'usero@hfu.de', 7, 'asdgasdg', 14, 'asdgasdg', '2020-12-12', '2021-12-12', 1, 'asdgasdgasdg'),
+	(10, 'orgaaaaa', 'asdgasdg', 'usero@hfu.de', 7, 'asdgasdg', 14, 'asdgasdg', '2020-12-12', '2021-12-12', 1, 'asdgasdgasdg'),
+	(11, 'orgaaaaaa', 'asdgasdg', 'usero@hfu.de', 7, 'asdgasdg', 14, 'asdgasdg', '2020-12-12', '2021-12-12', 1, 'asdgasdgasdg'),
+	(12, 'orgaaaaaaa', 'asdgasdg', 'usero@hfu.de', 7, 'asdgasdg', 14, 'asdgasdg', '2020-12-12', '2021-12-12', 1, 'asdgasdgasdg'),
+	(13, 'orgaaaaaaaa', 'asdgasdg', 'usero@hfu.de', 7, 'asdgasdg', 14, 'asdgasdg', '2020-12-12', '2021-12-12', 1, 'asdgasdgasdg'),
+	(14, 'orgaaaaaaaaa', 'asdgasdg', 'usero@hfu.de', 7, 'asdgasdg', 14, 'asdgasdg', '2020-12-12', '2021-12-12', 1, 'asdgasdgasdg'),
+	(15, 'orgaaaaaaaaaa', 'asdgasdg', 'usero@hfu.de', 7, 'asdgasdg', 14, 'asdgasdg', '2020-12-12', '2021-12-12', 1, 'asdgasdgasdg'),
+	(16, 'orgaaaaaaaaaaa', 'asdgasdg', 'usero@hfu.de', 7, 'asdgasdg', 14, 'asdgasdg', '2020-12-12', '2021-12-12', 1, 'asdgasdgasdg'),
+	(17, 'orgaaaaaaaaaaaa', 'asdgasdg', 'usero@hfu.de', 7, 'asdgasdg', 14, 'asdgasdg', '2020-12-12', '2021-12-12', 1, 'asdgasdgasdg'),
+	(18, 'orgaaaaaaaaaaaaa', 'asdgasdg', 'usero@hfu.de', 7, 'asdgasdg', 14, 'asdgasdg', '2020-12-12', '2021-12-12', 1, 'asdgasdgasdg'),
+	(19, 'orgaaaaaaaaaaaaaa', 'asdgasdg', 'usero@hfu.de', 7, 'asdgasdg', 14, 'asdgasdg', '2020-12-12', '2021-12-12', 1, 'asdgasdgasdg');
 
 -- --------------------------------------------------------
 
@@ -374,6 +403,18 @@ CREATE TABLE `productsdelivererjoin` (
   `ID_delivererOffer` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Daten für Tabelle `productsdelivererjoin`
+--
+
+INSERT INTO `productsdelivererjoin` (`ID_product`, `ID_delivererOffer`) VALUES
+	(1, 4),
+	(1, 5),
+	(2, 4),
+	(2, 5),
+	(3, 4),
+	(4, 4);
+
 -- --------------------------------------------------------
 
 --
@@ -385,6 +426,44 @@ CREATE TABLE `productsorgajoin` (
   `ID_organisationOffer` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Daten für Tabelle `productsorgajoin`
+--
+INSERT INTO `productsorgajoin` (`ID_product`, `ID_organisationOffer`) VALUES
+	(1, 5),
+	(1, 7),
+	(1, 8),
+	(1, 9),
+	(1, 10),
+	(1, 11),
+	(1, 12),
+	(1, 13),
+	(1, 14),
+	(1, 15),
+	(1, 17),
+	(1, 18),
+	(1, 19),
+	(2, 5),
+	(2, 7),
+	(2, 8),
+	(2, 9),
+	(2, 10),
+	(2, 11),
+	(2, 12),
+	(2, 13),
+	(2, 14),
+	(2, 15),
+	(2, 16),
+	(2, 17),
+	(2, 18),
+	(2, 19),
+	(3, 6),
+	(3, 10),
+	(3, 19),
+	(4, 12),
+	(4, 18);
+
+-- ---------------------------------------------------------
 --
 -- Indizes der exportierten Tabellen
 --

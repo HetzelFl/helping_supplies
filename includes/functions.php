@@ -43,17 +43,6 @@ function reformDatetoDB($date){
     return (new DateTime($date))->format('Y-m-d');
 }
 
-function orgaDeactivate($id){
-    
-    global $db;
-    
-    $statement = "UPDATE organisation_offer "
-            . "SET startDate = '0000-00-00', endDate = '0000-00-00' "
-            . "WHERE id = $id";
-    
-    $db->query($statement);   
-}
-
 //function must be placed between <select></select>
 //displays a dropbox with all countries
 function selectCountryDropbox(){
@@ -73,15 +62,26 @@ function selectCountryDropbox(){
         }
 }
 
-function deliverDeactivate($id){
+function deliverDeactivate($id, $accountID){
     
     global $db;
     
     $statement = "UPDATE deliverer_offer "
-            . "SET startDate = '0000-00-00', endDate = '0000-00-00' "
-            . "WHERE id = $id";
+            . "SET startDate = '1753-01-01', endDate = '1753-01-01' "
+            . "WHERE id = ? AND responsibleAcc = ? ";
     
-    $db->query($statement);  
+    $db->prepare($statement)->execute(array($id, $accountID));  
+}
+
+function orgaDeactivate($id, $accountID){
+    
+    global $db;
+    
+    $statement = "UPDATE organisation_offer "
+            . "SET startDate = '1753-01-01', endDate = '1753-01-01' "
+            . "WHERE id = ? AND responsibleAcc = ? ";
+    
+    $db->prepare($statement)->execute(array($id, $accountID));   
 }
 
 function getDBEntryCount($table){
