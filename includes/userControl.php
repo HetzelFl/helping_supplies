@@ -2,29 +2,25 @@
 
 session_start();
 
-$_SESSION['accountsId'] = 1;
+if (isset($_SESSION['accountsId'])) {
 
 require_once ($root . "/helping_supplies/includes/dbConnect.php");
-$sql = "SELECT username,name FROM accounts";
-$db_erg = mysqli_query($db_link, $sql);
 
 //Get Activation Code from User
-$sql = "SELECT activation FROM `accounts` Where ID='" . $_SESSION['accountsId'] . "'";
+$sql = "SELECT activation,active FROM `accounts` Where ID='" . $_SESSION['accountsId'] . "'";
 $db_erg = mysqli_query($db_link, $sql);
-
-
 
 while ($zeile = mysqli_fetch_array($db_erg, MYSQL_ASSOC)) {
     $accountsActivation = $zeile['activation'];
+    $accountsActive = $zeile['active'];
 }
 
-//TODO Durch Login Funktion ersetzten
-//Fals gerade frisch eingeloggt
+//Fals gerade frisch eingeloggt oder gast
 if (!isset($_SESSION['accountsActivation'])) {
     $_SESSION['accountsActivation'] = $accountsActivation;
 }
 //Zufallszahl zur Vermeidung von Cookie Diebstahl.
-if ($_SESSION['accountsActivation'] == $accountsActivation) {
+if ($_SESSION['accountsActivation'] == $accountsActivation & $accountsActive == TRUE) {
     //Wenn Cookie okay
     require_once ($root . "/helping_supplies/includes/functions.php");
     $Aktivierungscode = zufallsstring(15);
@@ -33,8 +29,18 @@ if ($_SESSION['accountsActivation'] == $accountsActivation) {
     $sql = "UPDATE `accounts` SET `activation`='" . $Aktivierungscode . "' WHERE ID ='" . $_SESSION['accountsId'] . "'";
     mysqli_query($db_link, $sql);
     $_SESSION['accountsActivation'] = $Aktivierungscode;
-}  else {
+    $_SESSION['uCStatus'] = "OK";
+} elseif ($accountsActive == FALSE) {
+    //Wenn Account nicht aktiviert  
+    session_destroy();
+    session_start();
+
+    //TODO ggf durch Ausgabe in Infobox ersetzen
+    $_SESSION['uCStatus'] = "Account nicht aktiv";
+} else {
     //Wenn Cookie gestohlen oder veraltet
     session_destroy();
     session_start();
+    $_SESSION['uCStatus'] = "Fehler";
+}
 }

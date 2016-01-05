@@ -6,11 +6,6 @@ include($root . "/helping_supplies/template/header.php");
 ?>
 
 <div class="container">
-    <h1> Die Session ID lautet: 
-        <?php
-        echo $_SESSION['accountsId'];
-        ?>
-    </h1>
     <h1>Come together - Help together!</h1>
     <div class="block">
         

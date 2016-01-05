@@ -12,20 +12,26 @@
 
                 </ul>
             </li>
-            <li class='has-sub'><a href='#'>Eigene Angebote</a>
-                <ul>
+            <?php
+            if (isset($_SESSION['accountsId'])) {
+                ?>
+                <li class='has-sub'><a href='#'>Eigene Angebote</a>
+                    <ul>
 
-                    <li class='has-sub'><a href='#'>Einstellen</a>
-                        <ul>
-                            <li><a href='/helping_supplies/AngebotErstellen/create_Offer_Orga_HTML.php'>von Organisation</a></li>
-                            <li><a href='/helping_supplies/AngebotErstellen/create_Offer_Deliver_HTML.php'>von Privat</a></li>
-                        </ul>
-                    <li><a href='/helping_supplies/AngebotEditieren/list_Own_Orga.php'>Auflisten</a></li>
-                </ul>
-            </li>
-            <li><a href='#'>Account</a></li>
-            <li><a href='#'>Logout</a></li>
-            <li><a href='#'>Contact</a></li>
+                        <li class='has-sub'><a href='#'>Einstellen</a>
+                            <ul>
+                                <li><a href='/helping_supplies/AngebotErstellen/create_Offer_Orga_HTML.php'>von Organisation</a></li>
+                                <li><a href='/helping_supplies/AngebotErstellen/create_Offer_Deliver_HTML.php'>von Privat</a></li>
+                            </ul>
+                        <li><a href='/helping_supplies/AngebotEditieren/list_Own_Orga.php'>Auflisten</a></li>
+                    </ul>
+                </li>
+                <li><a href='#'>Account</a></li>
+                <li><a href='#'>Logout</a></li>
+                <?php
+            }
+            ?>
+            <li><a href='#'>Kontakt</a></li>
         </ul>
     </div>
 </div>
@@ -33,7 +39,7 @@
 <?php
 //Infobox anzeigen
 // Wenn nicht im registration Verzeichnis
-if (strpos(getcwd(),'registration') == false) {
+if (strpos(getcwd(), 'registration') == false) {
     //Wenn nicht eingelogt
     if (!isset($_SESSION['accountsId'])) {
         include($root . "/helping_supplies/template/infobox.php");
