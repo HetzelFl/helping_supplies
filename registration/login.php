@@ -5,11 +5,11 @@ include($root . "/helping_supplies/template/head.php");
 include($root . "/helping_supplies/template/header.php");
 
 //define variables and set to empty values
-$usernameErr = $passwordErr = $loginOK = "";
+$usernameErr = $passwordErr = "";
 
 if (isset($_REQUEST['Send'])) {
 //define variables and set to empty values
-$usernameErr = $passwordErr = $loginOK = "";
+    $usernameErr = $passwordErr = "";
 
     require_once ($root . "/helping_supplies/includes/functions.php");
     $username = filterfunktion($_REQUEST["lName"]);
@@ -17,7 +17,7 @@ $usernameErr = $passwordErr = $loginOK = "";
 
 //Get Data from User
     require_once ($root . "/helping_supplies/includes/dbConnect.php");
-    
+
     $sql = "SELECT ID,passwort,activation FROM `accounts` Where username='" . $username . "'";
     $db_erg = mysqli_query($db_link, $sql);
 
@@ -33,7 +33,9 @@ $usernameErr = $passwordErr = $loginOK = "";
         if (password_verify($passwordIN, $passwordDB)) {
             $_SESSION['accountsId'] = $accountsId;
             $_SESSION['accountsActivation'] = $accountsActivation;
-            $loginOK = "<p>Hallo " . $username . "! <br> Sie haben sich erfolgreich eingeloggt.</p>";
+            $_SESSION['accountsUsername'] = $username;
+            $_SESSION['reglog'] = "login";
+            echo "<meta http-equiv=\"refresh\" content=\"0; URL=/helping_supplies/index.php\">";
         } else {
             $passwordErr = "Passwort falsch";
         }
@@ -44,7 +46,6 @@ $usernameErr = $passwordErr = $loginOK = "";
 ?>
 <div class="container">
     <h1>Login</h1>
-    <?php echo $loginOK; ?>
     <form action="" method="post">
         <table class="u-full-width">
             <tr><td>Login Name:</td><td><input maxlength="50" name="lName" type="text" required="required"></td><td><font color="red"><b><?php echo $usernameErr; ?></b></font></td></tr>
