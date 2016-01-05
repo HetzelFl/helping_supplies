@@ -63,8 +63,8 @@ if (isset($_REQUEST['Send'])) {
             $ID = $zeile['MAX(`ID`)'];
         }
         //TODO aktivieren
-        //mail($_REQUEST['EMail'], "Registrierung abschließen", "Hallo,\n\num die Registrierung abzuschließen, klicken Sie bitte auf den folgenden Link:\n\nhttp://www.ihre-domain.de/reg-aktivieren.php?ID=" . $ID . "&Aktivierungscode=" . $Aktivierungscode . "", "FROM: $Absender");
-        //echo "Hallo,\n\num die Registrierung abzuschließen, klicken Sie bitte auf den folgenden Link:\n\nhttp://www.ihre-domain.de/reg-aktivieren.php?ID=" . $ID . "&Aktivierungscode=" . $Aktivierungscode . "";
+        //mail($_REQUEST['EMail'], "Registrierung abschließen", "Hallo,\n\num die Registrierung abzuschließen, klicken Sie bitte auf den folgenden Link:\n\nhttp://www.ihre-domain.de/regestration/reg-aktivieren.php?ID=" . $ID . "&Aktivierungscode=" . $Aktivierungscode . "", "FROM: $Absender");
+        //echo "Hallo,\n\num die Registrierung abzuschließen, klicken Sie bitte auf den folgenden Link:\n\nhttp://www.ihre-domain.de/regestration/reg-aktivieren.php?ID=" . $ID . "&Aktivierungscode=" . $Aktivierungscode . "";
         echo"Um die Registrierung abzuschließen, rufen Sie Ihr E-Mail-Postfach ab und klicken Sie auf den Aktivierungslink in der soeben an Sie versandten E-Mail.";
     }
 }
@@ -76,8 +76,8 @@ if ($ErrCounter > 0) {
             <table class="u-full-width">
                 <tr><td>Login Name:</td><td><input maxlength="50" name="lName" type="text" required="required"></td><td><font color="red"><b><?php echo $usernameErr; ?></b></font></td></tr>
                 <tr><td>Angezeigter Name:</td><td><input maxlength="255" name="name" type="text" required="required"></td><td><font color="red"><b><?php echo $nameErr; ?></b></font></td></tr>
-                <tr><td>Passwort:</td><td><input maxlength="255" name="password" type="text" required="required"></td><td><font color="red"><b><?php echo $passwordErr; ?></b></font></td></tr>
-                <tr><td>Passwort Wiederholung:</td><td><input maxlength="255" name="password2" type="text" required="required"></td><td><font color="red"><b><?php echo $passwordErr; ?></b></font></td></tr>
+                <tr><td>Passwort:</td><td><input maxlength="255" name="password" type="password" required="required"></td><td><font color="red"><b><?php echo $passwordErr; ?></b></font></td></tr>
+                <tr><td>Passwort Wiederholung:</td><td><input maxlength="255" name="password2" type="password" required="required"></td><td><font color="red"><b><?php echo $passwordErr; ?></b></font></td></tr>
                 <tr><td>E-Mail:</td><td><input maxlength="50" name="eMail" type="text" required="required"></td><td><font color="red"><b><?php echo $eMailErr; ?></b></font></td></tr>
                 <tr><td><input name="Send" type="submit" value="Absenden" class="button-primary"></td>
             </table>

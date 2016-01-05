@@ -16,6 +16,8 @@ $usernameErr = $passwordErr = $loginOK = "";
     $passwordIN = filterfunktion($_REQUEST["password"]);
 
 //Get Data from User
+    require_once ($root . "/helping_supplies/includes/dbConnect.php");
+    
     $sql = "SELECT ID,passwort,activation FROM `accounts` Where username='" . $username . "'";
     $db_erg = mysqli_query($db_link, $sql);
 

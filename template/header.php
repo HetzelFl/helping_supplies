@@ -27,7 +27,12 @@
                     </ul>
                 </li>
                 <li><a href='#'>Account</a></li>
-                <li><a href='#'>Logout</a></li>
+                <li><a href='/helping_supplies/registration/logout.php'>Logout</a></li>
+                <?php
+            } else {
+                ?>
+                <li><a href='/helping_supplies/registration/login.php'>Login</a></li>
+                <li><a href='/helping_supplies/registration/reg.php'>Regestrieren</a></li>
                 <?php
             }
             ?>

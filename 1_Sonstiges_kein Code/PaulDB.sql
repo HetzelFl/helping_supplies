@@ -42,8 +42,9 @@ CREATE TABLE `accounts` (
 --
 
 INSERT INTO `accounts` (`ID`, `username`, `passwort`, `email`, `name`, `website`, `activation`, `active`) VALUES
-(1, 'user1', '$2y$10$HjBzHQbzyfApZhZ8faM2du.SWhY.w0vW85r4PoEUlpI1hn7agJxF6', 'usero@hfu.de', 'orga1', NULL, 'AnKY!2VXtdcgDy2', 1),
-(2, 'user2', '$2y$10$AfHCoDojpwrOlgIrFk7sUe8Oqn0TgEF5Oho9heH13Se8yaXd0QoCq', 'userp@hfu.de', 'privat1', NULL, 'xehvO2cPtbJkbo3', 1);
+(1, 'user1', '$2y$10$3w.1RUCt3XdI0n.5sKLH0.IGLbkYCXp3frhfUAnVv9uQZJBAp.adG', 'org1@test.de', 'orga1', NULL, 'j17(QUCj)IoZ=nv', 1),
+(2, 'user2', '$2y$10$pRJw7mTNA0ToI7D6PP48T.ljF7dU.K7OClK64Ma9Gyr7FtcQJMhIy', 'priv1@test.de', 'priv1', NULL, '5W.hH(ZEn!et3(y', 1),
+(3, 'reg_Test', '$2y$10$Mj8VvjH0QhQ9fvc95YvaBecDp93dMuMVBNK3uu6prEMvjN9xcviQS', 'reg@test.de', 'Reg Test', NULL, 'QozRzqfz6bkGxkx', 0);
 
 -- --------------------------------------------------------
 
@@ -451,7 +452,7 @@ ALTER TABLE `productsorgajoin`
 -- AUTO_INCREMENT für Tabelle `accounts`
 --
 ALTER TABLE `accounts`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT für Tabelle `countries`
 --
