@@ -42,99 +42,9 @@ if (isset($_GET["page"])) {
         </div>
     </div>   
 <?php
-global $statement;
 
-$input1;
-$input2;
+include './filterPreparation.php';
 
-if (isset($_GET["filter"])){
-    
-    $_POST["filter"] = $_GET["filter"];
-    
-}
-if (isset($_POST["filter"]) && $_POST["filter"] != "nichts") {
-    if ($_POST["filter"] == "filterStartCountry") {
-
-        if(isset($_GET["in1"]))
-            $input1 = $_GET["in1"];
-        else
-            $input1 = filterfunktion($_POST["filterCountry"]);
-
-        $statement = filterStartCountry($input1);
-        
-        $entries = getDBEntryCount($statement);
-        
-        $statement .= setLimit($startAt, $rowsPerPage);
-        
-        echo "Startland: " . $input1;
-    } else if ($_POST["filter"] == "filterDestCountry") {
-        
-        if(isset($_GET["in1"]))
-            $input1 = $_GET["in1"];
-        else
-            $input1 = filterfunktion($_POST["filterCountry"]);
-
-        $statement = filterDestCountry($input1);
-        
-        $entries = getDBEntryCount($statement);
-        
-        $statement .= setLimit($startAt, $rowsPerPage);
-        
-        echo "Zielland: " . $input1;
-    } else if ($_POST["filter"] == "filterDate") {
-
-        if(isset($_GET["in1"]))
-            $input1 = $_GET["in1"];
-        else
-            $input1 = filterfunktion($_POST["filterStartDate"]);
-        
-        if(isset($_GET["in2"]))
-            $input2 = $_GET["in2"];
-        else       
-            $input2 = filterfunktion($_POST["filterEndDate"]);
-
-        if (validateDate($input1) || validateDate($input2)) {
-            
-            $statement = filterDatespan(reformDatetoDB($input1), reformDatetoDB($input2));
-                    
-            $entries = getDBEntryCount($statement);
-
-            $statement .= setLimit($startAt, $rowsPerPage);
-
-            echo "Angebot gültig zwischen " . $input1 . " und " . $input2;
-        } else {
-            $statement = filterNone($startAt, $rowsPerPage);
-            echo "Kein Filter gesetzt";
-        }
-    } else if ($_POST["filter"] == "filterName") {
-
-        if(isset($_GET["in1"]))
-            $input1 = $_GET["in1"];
-        else
-            $input1 = filterfunktion($_POST["filterInputName"]);
-
-        if (preg_match("/^[a-zA-Z ]*$/", $input1)) {
-            
-            $statement = filterName($input1);
-                    
-            $entries = getDBEntryCount($statement);
-
-            $statement .= setLimit($startAt, $rowsPerPage);
-        
-            echo "Name beinhaltet \"" . $input1 . "\"";
-        } else {
-            $statement = filterNone($startAt, $rowsPerPage);
-            echo "Kein Filter gesetzt";
-        }
-    }
-} else {
-    $statement = filterNone();
-    
-    $entries = getDBEntryCount($statement);
-    
-    $statement .= setLimit($startAt, $rowsPerPage);
-    echo "Kein Filter gesetzt";
-}
 ?>
 
     <table style="width: 100%">
@@ -151,11 +61,10 @@ if (isset($_POST["filter"]) && $_POST["filter"] != "nichts") {
 <?php
 $id = -1;
 
-$test = $db->query($statement);
-$test->fetch();
-foreach ($iter = $db->query($statement) as $row)
+foreach ($test = $db->query($statement2) as $row2){//$test->fetch();
+    foreach ($iter = $db->query($statement) as $row)
 /* while($row = mysql_fetch_array($result)) */ {   //Creates a loop to loop through results                       
-    if ($id != htmlspecialchars($row['id'])) {
+    //if ($id != htmlspecialchars($row['id'])) {
         $id = htmlspecialchars($row['id']);
         echo "<tr>\n";
         echo "<td>" . htmlspecialchars($row['offerer']) . "</td>\n";
@@ -167,10 +76,14 @@ foreach ($iter = $db->query($statement) as $row)
         echo "<td>";
 
         do {
-            echo htmlspecialchars($row['pr']);
+            while ($row2['id'] != $id)
+                $row2 = $test->fetch();
+            
+            echo htmlspecialchars($row2['pr']);
 
-            if (($temp = $test->fetchColumn()) == $id) {
-                $row = $iter->fetch();
+            $row2 = $test->fetch();
+            if ($row2['id'] == $id) {
+                //$row = $iter->fetch();
                 echo ", ";
             } else {
                 break;
@@ -181,6 +94,7 @@ foreach ($iter = $db->query($statement) as $row)
         echo "<td>" . "<a href=\"/helping_supplies/showOffer/showOffer.php?id=$id&typ=orga\">Info</a></td>\n";
         echo "</tr>";  //$row['index'] the index here is a field name
     }
+    break;
 }
 ?>
     </table>
@@ -195,7 +109,7 @@ foreach ($iter = $db->query($statement) as $row)
             }
             else {
                 $filter = $_POST["filter"];
-                echo "<a href=\"orgaAngebotAuflisten.php?page=$i&filter=$filter&in1=$input1&in2?$input2\">$i</a>&nbsp;";
+                echo "<a href=\"orgaAngebotAuflisten.php?page=$i&filter=$filter&in1=$input1&in2=$input2\">$i</a>&nbsp;";
             }
         }
         ?>
