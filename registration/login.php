@@ -7,6 +7,7 @@ include($root . "/helping_supplies/template/header.php");
 //Kein Login wenn User bereits eingeloggt ist
 if (isset($_SESSION['accountsId'])) {
     echo "<meta http-equiv=\"refresh\" content=\"0; URL=/helping_supplies/index.php\">";
+    exit;
 }
 //define variables and set to empty values
 $ErrCounter = 0;
