@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Erstellungszeit: 05. Jan 2016 um 18:16
+-- Erstellungszeit: 05. Jan 2016 um 20:20
 -- Server-Version: 10.0.17-MariaDB
 -- PHP-Version: 5.6.14
 
@@ -34,17 +34,19 @@ CREATE TABLE `accounts` (
   `name` char(20) DEFAULT NULL,
   `website` char(100) DEFAULT NULL,
   `activation` char(50) DEFAULT NULL,
-  `active` tinyint(1) NOT NULL
+  `active` tinyint(1) NOT NULL,
+  `admin` tinyint(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Daten für Tabelle `accounts`
 --
 
-INSERT INTO `accounts` (`ID`, `username`, `passwort`, `email`, `name`, `website`, `activation`, `active`) VALUES
-(1, 'user1', '$2y$10$3w.1RUCt3XdI0n.5sKLH0.IGLbkYCXp3frhfUAnVv9uQZJBAp.adG', 'org1@test.de', 'orga1', NULL, 'VDq.LCDq:kWSYJd', 1),
-(2, 'user2', '$2y$10$pRJw7mTNA0ToI7D6PP48T.ljF7dU.K7OClK64Ma9Gyr7FtcQJMhIy', 'priv1@test.de', 'priv1', NULL, '5W.hH(ZEn!et3(y', 1),
-(3, 'reg_Test', '$2y$10$Mj8VvjH0QhQ9fvc95YvaBecDp93dMuMVBNK3uu6prEMvjN9xcviQS', 'reg@test.de', 'Reg Test', NULL, 'QozRzqfz6bkGxkx', 0);
+INSERT INTO `accounts` (`ID`, `username`, `passwort`, `email`, `name`, `website`, `activation`, `active`, `admin`) VALUES
+(1, 'user1', '$2y$10$3w.1RUCt3XdI0n.5sKLH0.IGLbkYCXp3frhfUAnVv9uQZJBAp.adG', 'org1@test.de', 'orga1', NULL, ':P5rGshzb7(5czs', 1, 0),
+(2, 'user2', '$2y$10$pRJw7mTNA0ToI7D6PP48T.ljF7dU.K7OClK64Ma9Gyr7FtcQJMhIy', 'priv1@test.de', 'priv1', NULL, 'mZrW9Bvt5l67XBO', 1, 0),
+(3, 'reg_Test', '$2y$10$Mj8VvjH0QhQ9fvc95YvaBecDp93dMuMVBNK3uu6prEMvjN9xcviQS', 'reg@test.de', 'Reg Test', NULL, 'QozRzqfz6bkGxkx', 0, 0),
+(4, 'admin', '$2y$10$7Yh0Vx/khWesYZ1k/CxLIOrSV1HHgAMJhKwDyIbQZvTtJJDGX6UN2', 'admin@test.de', 'Admin', NULL, 'u5lxTI235RNkf65', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -531,7 +533,7 @@ ALTER TABLE `productsorgajoin`
 -- AUTO_INCREMENT für Tabelle `accounts`
 --
 ALTER TABLE `accounts`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT für Tabelle `countries`
 --
