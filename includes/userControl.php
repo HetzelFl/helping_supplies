@@ -34,20 +34,4 @@ if (isset($_SESSION['accountsId'])) {
         session_destroy();
         session_start();
     }
-} else {
-    //TODO löschen
-    //Nur zum Testen um auf Login zu verzichten
-    //ID ändern um sich als anderen User einzuloggen
-    $_SESSION['accountsId'] = 1;
-
-    require_once ($root . "/helping_supplies/includes/dbConnect.php");
-
-//Get Activation Code from User
-    $sql = "SELECT activation,active FROM `accounts` Where ID='" . $_SESSION['accountsId'] . "'";
-    $db_erg = mysqli_query($db_link, $sql);
-
-    while ($zeile = mysqli_fetch_array($db_erg, MYSQL_ASSOC)) {
-        $accountsActivation = $zeile['activation'];
-    }
-    $_SESSION['accountsActivation'] = $accountsActivation;
 }

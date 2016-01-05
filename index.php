@@ -3,8 +3,6 @@ $root = $_SERVER['DOCUMENT_ROOT'];
 //include head and header
 include($root . "/helping_supplies/template/head.php");
 include($root . "/helping_supplies/template/header.php");
-
-
 ?>
 <div class="container">
     <h1>Come together - Help together!</h1>
