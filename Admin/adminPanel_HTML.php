@@ -2,9 +2,18 @@
 $root = $_SERVER['DOCUMENT_ROOT'];
 //include head and header
 include_once ($root . "/helping_supplies/template/head.php");
+include_once ($root . "/helping_supplies/template/header.php");
 
 include '../includes/dbConnectPDO.php';
 include './adminPanelFunctions.php';
+
+if (isset($_SESSION['accountsAdmin'] )) {
+    echo "<meta http-equiv=\"refresh\" content=\"0; URL=/helping_supplies/index.php\">";
+exit;
+}
+
+if ($_SERVER["REQUEST_METHOD"] == "POST")
+    echo "<meta http-equiv=\"refresh\" content=\"0; URL=/helping_supplies/Admin/adminPanel_HTML.php\">";
 ?>
 <p></p>
 <div class="container">
@@ -31,10 +40,7 @@ include './adminPanelFunctions.php';
 
                 if ($startCountry != "") {
                     try {
-                        echo $startCountry . " wurde entfernt.";
-                        //deleteCountry($startCountry)
-                        //TO DO leere.php ersetzen mit Auflistung der eingegebenen Daten
-                        //header('Location: leere.php');
+                        deleteCountry($startCountry);
                     } catch (Exception $e) {
                         echo "Fehler beim Datenbankzugriff. Bitte dem Administrator Bescheid geben.";
                     }
@@ -69,17 +75,15 @@ include './adminPanelFunctions.php';
                 if (preg_match("/^[a-zA-Z ]*$/", $abbreviation) && preg_match("/^[a-zA-Z ]*$/", $country)) {
                     if ($_POST["country"] != "" && $_POST["abbreviation"] != "") {
                         try {
-                            echo "Test";
-                            //create_Offer($table, $name, $contact, $eMail, $startCountry, $startVillage, $destCountry, $destVillage, reformDate($startDate), reformDate($endDate), $products);
-                            //TO DO leere.php ersetzen mit Auflistung der eingegebenen Daten
-                            header('Location: leere.php');
+                            addCountry($abbreviation, $country);
+
                         } catch (Exception $e) {
                             echo "Fehler beim Datenbankzugriff. Bitte dem Administrator Bescheid geben.";
                         }
                     }
                 } else {
-                    echo $countryErr;
                     $countryErr = "Bitte nur Buchstaben und Leerzeichen verwenden.";
+                    echo $countryErr;
                 }
             }
             ?>
@@ -110,14 +114,13 @@ include './adminPanelFunctions.php';
 
                 if ($_POST["product"] != "") {
                     try {
-                        echo (deleteProduct($product));
+                        deleteProduct($product);
                         //TO DO leere.php ersetzen mit Auflistung der eingegebenen Daten
                         //header('Location: leere.php');
                     } catch (Exception $e) {
                         echo "Fehler beim Datenbankzugriff. Bitte dem Administrator Bescheid geben.";
                     }
-                } else
-                    echo "TEST";
+                }
             }
             ?>
         </form>
@@ -139,7 +142,7 @@ include './adminPanelFunctions.php';
 
                 if ($_POST["productAdd"] != "") {
                     try {
-                        echo (addProduct($productAdd));
+                        addProduct($productAdd);
                         //TO DO leere.php ersetzen mit Auflistung der eingegebenen Daten
                         //header('Location: leere.php');
                     } catch (Exception $e) {

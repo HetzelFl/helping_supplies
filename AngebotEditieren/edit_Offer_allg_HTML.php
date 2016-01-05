@@ -7,9 +7,10 @@ include_once ($root . "/helping_supplies/template/header.php");
 
 $accountID = $_SESSION['accountsId'];
 
-if(getColumnData($id, 'responsibleAcc') != $accountID)
+if(getColumnData($id, 'responsibleAcc') != $accountID){
     header("Location: /helping_supplies/index.php");
-
+    exit;
+}
 ?>    
 <div class="container">
         <form onSubmit="return" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">

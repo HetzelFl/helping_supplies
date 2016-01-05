@@ -1,6 +1,7 @@
 <?php
 $root = $_SERVER['DOCUMENT_ROOT'];
 include($root . "/helping_supplies/includes/userControl.php");
+require_once ($root . "/helping_supplies/includes/functions.php");
 ?>
 
 <!DOCTYPE html>
