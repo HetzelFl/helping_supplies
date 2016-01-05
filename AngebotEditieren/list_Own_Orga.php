@@ -25,6 +25,7 @@ include './Edit_HTML_functions.php';
             <th>Verfügbar ab</th>
             <th>Produkt</th>
             <th>Kontakt</th>
+            <th>Deaktivieren</th>
             <th>Löschen</th>
         </tr>
         <?php
@@ -35,7 +36,10 @@ include './Edit_HTML_functions.php';
 
             if ($offerID != "") {
                 try {
-                    deleteOrgaOffer($offerID, $accountID);
+                    if(isset($_POST["delete"]))
+                        deleteOrgaOffer($offerID, $accountID);
+                    if(isset($_POST["idOrga"]))
+                        orgaDeactivate ($offerID, $accountID);
                     //TO DO leere.php ersetzen mit Auflistung der eingegebenen Daten
                     //header('Location: leere.php');
                 } catch (Exception $e) {
@@ -77,6 +81,9 @@ include './Edit_HTML_functions.php';
                 echo "</td>\n";
                 echo "<td>" . "<a href=\"/helping_supplies/AngebotEditieren/edit_Offer_Orga_HTML.php?id=$id\">Editieren</a></td>\n";
                 echo "<td>";
+                echo "<input type=\"submit\" value=\"Deaktivieren\" name=\"deactivate\">";
+                echo "</td>\n";
+                echo "<td>";
                 echo "<input type=\"submit\" value=\"Löschen\" name=\"delete\" onclick=\"return confirm('Eintrag wirklich löschen?');this.parentNode.removeChild(this);\">";
                 echo "</td>\n";
                 echo "</tr>";  //$row['index'] the index here is a field name
@@ -98,6 +105,7 @@ include './Edit_HTML_functions.php';
             <th>Verfügbar ab</th>
             <th>Produkt</th>
             <th>Kontakt</th>
+            <th>Deaktivieren</th>
             <th>Löschen</th>
         </tr>
         <?php
@@ -108,7 +116,10 @@ include './Edit_HTML_functions.php';
 
                 if ($offerID != "") {
                     try {
-                        deleteDeliverOffer($offerID, $accountID);
+                        if(isset($_POST["delete"]))
+                            deleteDeliverOffer($offerID, $accountID);
+                        if(isset($_POST["deactivate"]))
+                            deliverDeactivate ($offerID, $accountID);
                         //TO DO leere.php ersetzen mit Auflistung der eingegebenen Daten
                         //header('Location: leere.php');
                     } catch (Exception $e) {
@@ -148,6 +159,9 @@ include './Edit_HTML_functions.php';
                 } while (true);
                 echo "</td>\n";
                 echo "<td>" . "<a href=\"/helping_supplies/AngebotEditieren/edit_Offer_Deliver_HTML.php?id=$id\">Editieren</a></td>\n";
+                echo "<td>";
+                echo "<input type=\"submit\" value=\"Deaktivieren\" name=\"deactivate\">";
+                echo "</td>\n";
                 echo "<td>";
                 echo "<input type=\"submit\" value=\"Löschen\" name=\"delete\" onclick=\"return confirm('Eintrag wirklich löschen?');this.parentNode.removeChild(this);\">";
                 echo "</td>\n";
