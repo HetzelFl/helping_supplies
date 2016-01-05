@@ -31,9 +31,11 @@ if ($_REQUEST['ID'] && $_REQUEST['Aktivierungscode']) {
         //Account aktivieren
         $sql = "UPDATE `accounts` SET `active`=TRUE WHERE ID= '" . $_REQUEST['ID'] . "'";
         mysqli_query($db_link, $sql);
-        echo"Vielen Dank für Ihre Registrierung. Der Aktivierungsprozess ist nun abgeschlossen.";
+        $_SESSION['reglog'] = "reg-akti";
+        echo "<meta http-equiv=\"refresh\" content=\"0; URL=/helping_supplies/index.php\">";
     } elseif ($count == 0) {
-        echo"Dieser Account ist nicht bekannt";
+        $_SESSION['reglog'] = "reg-false";
+        echo "<meta http-equiv=\"refresh\" content=\"0; URL=/helping_supplies/index.php\">";
     }
 }
 ?>

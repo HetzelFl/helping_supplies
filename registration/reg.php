@@ -69,6 +69,7 @@ if (isset($_REQUEST['Send'])) {
         //TODO aktivieren
         //mail($_REQUEST['EMail'], "Registrierung abschließen", "Hallo,\n\num die Registrierung abzuschließen, klicken Sie bitte auf den folgenden Link:\n\nhttp://www.ihre-domain.de/regestration/reg-aktivieren.php?ID=" . $ID . "&Aktivierungscode=" . $Aktivierungscode . "", "FROM: $Absender");
         //echo "Hallo,\n\num die Registrierung abzuschließen, klicken Sie bitte auf den folgenden Link:\n\nhttp://www.ihre-domain.de/registration/reg-aktivieren.php?ID=" . $ID . "&Aktivierungscode=" . $Aktivierungscode . "";
+        $_SESSION['reglog'] = "reg";
         echo "<meta http-equiv=\"refresh\" content=\"0; URL=/helping_supplies/index.php\">";
     }
 }
