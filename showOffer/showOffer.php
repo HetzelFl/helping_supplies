@@ -30,14 +30,17 @@ $db_link = mysqli_connect(
 );
 
 if ($_REQUEST['typ'] == "orga") {
-    $sql = "SELECT * FROM deliverer_offer WHERE ID = '" . $_REQUEST['id'] . "'";
+    $sql = "SELECT * FROM organisation_offer WHERE ID = '" . $_REQUEST['id'] . "'";
     $db_erg = mysqli_query($db_link, $sql);
 } else {
     $sql = "SELECT * FROM deliverer_offer WHERE ID = '" . $_REQUEST['id'] . "'";
     $db_erg = mysqli_query($db_link, $sql);
 }
+$count = 0;
+$ErrMessage = "";
+$ErrCounter = 0;
+
 while ($zeile = mysqli_fetch_array($db_erg, MYSQL_ASSOC)) {
-    $ID = $zeile['ID'];
     $offerer = $zeile['offerer'];
     $eMail = $zeile['eMail'];
     $startCountry = $zeile['startCountry'];
@@ -49,6 +52,25 @@ while ($zeile = mysqli_fetch_array($db_erg, MYSQL_ASSOC)) {
     $infoField = $zeile['textField'];
     if ($_REQUEST['typ'] == "orga") {
         $contact = $zeile['contact'];
+    }
+    $count++;
+}
+//Wenn falsche ID
+if ($count == 0) {
+    $ErrMessage = "Dieses Angebot exestiert nicht.";
+    $ErrCounter++;
+}
+
+//ID in Ländernamen
+$sql = "SELECT * FROM `countries`";
+$db_erg = mysqli_query($db_link, $sql);
+while ($zeile = mysqli_fetch_array($db_erg, MYSQL_ASSOC)) {
+    $ID = $zeile['ID'];
+    if ($ID == $startCountry) {
+        $startCountry = $zeile['countryName'];
+    }
+    if ($ID == $destinationCountry) {
+        $destinationCountry = $zeile['countryName'];
     }
 }
 ?>
