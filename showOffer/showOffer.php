@@ -3,6 +3,54 @@ $root = $_SERVER['DOCUMENT_ROOT'];
 //include head and header
 include($root . "/helping_supplies/template/head.php");
 include($root . "/helping_supplies/template/header.php");
+
+if (!isset($_REQUEST['id']) OR ! isset($_REQUEST['typ'])) {
+    echo "<meta http-equiv=\"refresh\" content=\"0; URL=/helping_supplies/index.php\">";
+    exit;
+} else {
+    //id und typ vorhanden
+    require_once ($root . "/helping_supplies/includes/functions.php");
+
+    $_REQUEST['id'] = filterfunktion($_REQUEST['id']);
+    $_REQUEST['typ'] = filterfunktion($_REQUEST['typ']);
+}
+
+//typ korrekt?
+if ($_REQUEST['typ'] == "orga" OR $_REQUEST['typ'] == "deliver") {
+    $status = True;
+} else {
+    echo "<meta http-equiv=\"refresh\" content=\"0; URL=/helping_supplies/index.php\">";
+    exit;
+}
+
+//Daten des Angebots aus DB holen
+require_once ($root . "/helping_supplies/includes/dbConnect.php");
+$db_link = mysqli_connect(
+        MYSQL_HOST, MYSQL_BENUTZER, MYSQL_KENNWORT, MYSQL_DATENBANK
+);
+
+if ($_REQUEST['typ'] == "orga") {
+    $sql = "SELECT * FROM deliverer_offer WHERE ID = '" . $_REQUEST['id'] . "'";
+    $db_erg = mysqli_query($db_link, $sql);
+} else {
+    $sql = "SELECT * FROM deliverer_offer WHERE ID = '" . $_REQUEST['id'] . "'";
+    $db_erg = mysqli_query($db_link, $sql);
+}
+while ($zeile = mysqli_fetch_array($db_erg, MYSQL_ASSOC)) {
+    $ID = $zeile['ID'];
+    $offerer = $zeile['offerer'];
+    $eMail = $zeile['eMail'];
+    $startCountry = $zeile['startCountry'];
+    $startVillage = $zeile['startVillage'];
+    $destinationCountry = $zeile['destinationCountry'];
+    $destinationVillage = $zeile['destinationVillage'];
+    $startDate = $zeile['startDate'];
+    $endDate = $zeile['endDate'];
+    $infoField = $zeile['textField'];
+    if ($_REQUEST['typ'] == "orga") {
+        $contact = $zeile['contact'];
+    }
+}
 ?>
 
 <div class="container">
@@ -39,9 +87,9 @@ include($root . "/helping_supplies/template/header.php");
         <input class="button-primary" type="submit" value="Kontaktieren">
     </form>
 
-<div class="responsiveGMaps">
-    <iframe width="600" height="450" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=Afghanistan,Marjah&key=AIzaSyCP4tAaRU6nhhE0tdEtE3U3mqp1JJUgnwA" allowfullscreen></iframe>
-</div>
+    <div class="responsiveGMaps">
+        <iframe width="600" height="450" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=Afghanistan,Marjah&key=AIzaSyCP4tAaRU6nhhE0tdEtE3U3mqp1JJUgnwA" allowfullscreen></iframe>
+    </div>
 </div>
 
 <?php

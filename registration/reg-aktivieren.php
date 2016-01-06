@@ -2,6 +2,7 @@
 
 if (!isset($_REQUEST['ID']) OR !isset($_REQUEST['Aktivierungscode'])) {
     echo "<meta http-equiv=\"refresh\" content=\"0; URL=/helping_supplies/index.php\">";
+    exit;
 }
 
 $root = $_SERVER['DOCUMENT_ROOT'];
