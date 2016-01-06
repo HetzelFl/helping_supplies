@@ -83,7 +83,7 @@ if ($ErrCounter > 0) {
                 <tr><td>Angezeigter Name:</td><td><input maxlength="255" name="name" type="text" required="required"></td><td><font color="red"><b><?php echo $nameErr; ?></b></font></td></tr>
                 <tr><td>Passwort:</td><td><input maxlength="255" name="password" type="password" required="required"></td><td><font color="red"><b><?php echo $passwordErr; ?></b></font></td></tr>
                 <tr><td>Passwort Wiederholung:</td><td><input maxlength="255" name="password2" type="password" required="required"></td><td><font color="red"><b><?php echo $passwordErr; ?></b></font></td></tr>
-                <tr><td>E-Mail:</td><td><input maxlength="50" name="eMail" type="text" required="required"></td><td><font color="red"><b><?php echo $eMailErr; ?></b></font></td></tr>
+                <tr><td>E-Mail:</td><td><input maxlength="50" name="eMail" type="email" required="required"></td><td><font color="red"><b><?php echo $eMailErr; ?></b></font></td></tr>
                 <tr><td><input name="Send" type="submit" value="Absenden" class="button-primary"></td>
             </table>
         </form>
