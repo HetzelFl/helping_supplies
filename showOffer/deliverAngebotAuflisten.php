@@ -51,9 +51,9 @@ include './filterPreparation.php';
         <tr>
             <th>Name</th>
             <th>Startland</th>
-            <th>Startdorf</th>
+            <th>Startort</th>
             <th>Zielland</th>
-            <th>Zieldorf</th>
+            <th>Zielort</th>
             <th>Verfügbar ab</th>
             <th>Produkt</th>
             <th>Kontakt</th>

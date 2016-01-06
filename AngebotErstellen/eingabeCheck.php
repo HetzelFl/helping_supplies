@@ -9,9 +9,9 @@
                     $postOK = false;
                     $nameErr = "Bitte Namen eingeben";
                 }
-                else if (!preg_match("/^[a-zA-Z ]*$/",$_POST["name"])) {
+                else if (!preg_match("/^[a-zA-Z _0-9-]*$/",$_POST["name"])) {
                     $postOK = false;
-                    $nameErr = "Bitte nur Buchstaben und Leerzeichen eingeben";
+                    $nameErr = "Bitte nur Buchstaben, Leerzeichen, Zahlen, Binde- und Unterstrich eingeben";
                 }
                 $name = filterfunktion($_POST["name"]);
                 
@@ -27,6 +27,10 @@
                 //eMAIL---------------------------------
                 
                 $eMail = filterfunktion($_POST["eMail"]);
+                if (!filter_var($eMail, FILTER_VALIDATE_EMAIL)) {
+                    $postOK = false;
+                    $eMailErr = "Üngültige E-Mail";
+                }
                 
                 //STARTCOUNTRY---------------------------------
                 if( $_POST["startCountry"] == ""){

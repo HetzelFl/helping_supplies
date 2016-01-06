@@ -19,9 +19,9 @@ include './Edit_HTML_functions.php';
         <tr align="left">
             <th>Organisation</th>
             <th>Startland</th>
-            <th>Startdorf</th>
+            <th>Startort</th>
             <th>Zielland</th>
-            <th>Zieldorf</th>
+            <th>Zielort</th>
             <th>Verfügbar ab</th>
             <th>Produkt</th>
             <th>Kontakt</th>
@@ -99,9 +99,9 @@ include './Edit_HTML_functions.php';
         <tr align="left">
             <th>Name</th>
             <th>Startland</th>
-            <th>Startdorf</th>
+            <th>Startort</th>
             <th>Zielland</th>
-            <th>Zieldorf</th>
+            <th>Zielort</th>
             <th>Verfügbar ab</th>
             <th>Produkt</th>
             <th>Kontakt</th>

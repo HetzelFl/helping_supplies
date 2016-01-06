@@ -7,7 +7,7 @@ include_once ($root . "/helping_supplies/template/header.php");
 include '../includes/dbConnectPDO.php';
 include './adminPanelFunctions.php';
 
-if (isset($_SESSION['accountsAdmin'] )) {
+if (!isset($_SESSION['accountsAdmin'] )) {
     echo "<meta http-equiv=\"refresh\" content=\"0; URL=/helping_supplies/index.php\">";
 exit;
 }
@@ -165,9 +165,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
         <tr align="left">
             <th>Organisation</th>
             <th>Startland</th>
-            <th>Startdorf</th>
+            <th>Startort</th>
             <th>Zielland</th>
-            <th>Zieldorf</th>
+            <th>Zielort</th>
             <th>Verfügbar ab</th>
             <th>Produkt</th>
             <th>Kontakt</th>
@@ -236,9 +236,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
         <tr align="left">
             <th>Name</th>
             <th>Startland</th>
-            <th>Startdorf</th>
+            <th>Startort</th>
             <th>Zielland</th>
-            <th>Zieldorf</th>
+            <th>Zielort</th>
             <th>Verfügbar ab</th>
             <th>Produkt</th>
             <th>Kontakt</th>

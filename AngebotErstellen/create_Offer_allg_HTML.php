@@ -74,7 +74,7 @@ $id = $_SESSION['accountsId'];
                 <span class="error"> <?php echo $startCErr;?></span>
             </p>  
 
-            Das Startdorf*: 
+            Der Startort*: 
             <p><input type="text" name="startVillage" value="<?php echo $startVillage; ?>" required="required"/>
                 <span class="error"> <?php echo $startVErr;?></span>
             </p>
@@ -90,7 +90,7 @@ $id = $_SESSION['accountsId'];
                 <span class="error"> <?php echo $destCErr;?></span>
                 </p>
 
-            Das Zieldorf*: 
+            Der Zielort*: 
                 <p><input type="text" name="destVillage" value="<?php echo $destVillage; ?>" required="required"/>
                 <span class="error"> <?php echo $destVErr;?></span>
                 </p>

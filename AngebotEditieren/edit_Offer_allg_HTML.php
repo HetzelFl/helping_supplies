@@ -27,7 +27,7 @@ if(getColumnData($id, 'responsibleAcc') != $accountID){
             <div class="columns five">
             <?php
             if($table == 'organisation_offer'){
-            echo "Ihr Organame: <p><input type=\"text\" name=\"name\" value=\"";
+            echo "Ihr Organame: <p><input type=\"text\" name=\"name\" required=\"required\" value=\"";
                                 
                 if(!isset($_POST['name']))
                     echo getColumnData($id, 'offerer')."\">";
@@ -47,7 +47,7 @@ if(getColumnData($id, 'responsibleAcc') != $accountID){
             echo "</p>";
             }
             else{
-                echo "Ihr Name: <p><input type=\"text\" name=\"name\" value=\"";
+                echo "Ihr Name: <p><input type=\"text\" name=\"name\" required=\"required\" value=\"";
                                 
                 if(!isset($_POST['name']))
                     echo getColumnData($id, 'offerer')."\">";
@@ -60,7 +60,7 @@ if(getColumnData($id, 'responsibleAcc') != $accountID){
             ?>
             
             Ihre eMail: 
-            <p><input type="email" name="eMail" value=
+            <p><input type="email" name="eMail" required="required" required="required" value=
                                 <?php
                                 if(!isset($_POST['eMail']))
                                     echo getColumnData($id, 'eMail');
@@ -74,7 +74,7 @@ if(getColumnData($id, 'responsibleAcc') != $accountID){
             <div class="columns five">
             Das Startland: 
             
-                <p><select name="startCountry">
+                <p><select name="startCountry" required="required" >
                     <option value=
                         <?php
                         if(!isset($_POST['startCountry']))
@@ -97,8 +97,8 @@ if(getColumnData($id, 'responsibleAcc') != $accountID){
                 <span class="error"> <?php echo $startCErr;?></span>
             </p>  
             
-            Das Startdorf: 
-            <p><input type="text" name="startVillage" value=
+            Der Startort: 
+            <p><input type="text" name="startVillage" required="required" value=
                 <?php
                 if(!isset($_POST['startVillage']))
                     echo getColumnData($id, 'startVillage');
@@ -110,7 +110,7 @@ if(getColumnData($id, 'responsibleAcc') != $accountID){
 
             Das Zielland:  
             
-                <p><select name="destCountry">
+                <p><select name="destCountry" required="required" >
                     <option value=
                         <?php
                         if(!isset($_POST['destCountry']))
@@ -133,8 +133,8 @@ if(getColumnData($id, 'responsibleAcc') != $accountID){
                 <span class="error"> <?php echo $destCErr;?></span>
             </p>
                         
-            Das Zieldorf: 
-            <p><input type="text" name="destVillage" value=
+            Der Zielort: 
+            <p><input type="text" name="destVillage" required="required" value=
                 <?php
                 if(!isset($_POST['destVillage']))
                     echo getColumnData($id, 'destinationVillage');
@@ -147,7 +147,7 @@ if(getColumnData($id, 'responsibleAcc') != $accountID){
             
             <div class="columns five">
             Das Startdatum: 
-            <p><input type="date" name="startDate" value=
+            <p><input type="date" name="startDate" required="required" value=
                 <?php
                 if(!isset($_POST['startDate']))
                     echo reformDatetoNormal(getColumnData($id, 'startDate'));
@@ -158,7 +158,7 @@ if(getColumnData($id, 'responsibleAcc') != $accountID){
             </p>
             
             Das Enddatum: 
-            <p><input type="date" name="endDate" value=
+            <p><input type="date" name="endDate" required="required" value=
                 <?php
                 if(!isset($_POST['endDate']))
                     echo reformDatetoNormal(getColumnData($id, 'endDate'));
