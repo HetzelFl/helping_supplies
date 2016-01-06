@@ -26,6 +26,11 @@
                         <li><a href='/helping_supplies/AngebotEditieren/list_Own_Orga.php'>Auflisten</a></li>
                     </ul>
                 </li>
+                <?php
+                if (isset($_SESSION['accountsAdmin'])) {
+                    echo "<li><a href='/helping_supplies/Admin/adminPanel_HTML.php'>Admin Panel</a></li>";
+                }
+                ?>
                 <li><a href='#'>Account</a></li>
                 <li><a href='/helping_supplies/registration/logout.php'>Logout</a></li>
                 <?php
@@ -45,5 +50,5 @@
 //Infobox anzeigen
 // Wenn nicht im registration Verzeichnis
 if (strpos(getcwd(), 'registration') == false) {
-        include($root . "/helping_supplies/template/infobox.php");
+    include($root . "/helping_supplies/template/infobox.php");
 }

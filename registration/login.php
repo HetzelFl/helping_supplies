@@ -24,7 +24,7 @@ if (isset($_REQUEST['Send'])) {
 //Get Data from User
     require_once ($root . "/helping_supplies/includes/dbConnect.php");
 
-    $sql = "SELECT ID,passwort,activation FROM `accounts` Where username='" . $username . "'";
+    $sql = "SELECT ID,passwort,activation,active FROM `accounts` Where username='" . $username . "'";
     $db_erg = mysqli_query($db_link, $sql);
 
     $count = 0;
@@ -32,20 +32,27 @@ if (isset($_REQUEST['Send'])) {
         $passwordDB = $zeile['passwort'];
         $accountsId = $zeile['ID'];
         $accountsActivation = $zeile['activation'];
+        $accountsActive = $zeile['active'];
         $count++;
     }
 
     if ($count == 1) {
         if (password_verify($passwordIN, $passwordDB)) {
-            $_SESSION['accountsId'] = $accountsId;
-            $_SESSION['accountsActivation'] = $accountsActivation;
-            $_SESSION['accountsUsername'] = $username;
-            $_SESSION['reglog'] = "login";
-            echo "<meta http-equiv=\"refresh\" content=\"0; URL=/helping_supplies/index.php\">";
+            if ($accountsActive) {
+                $_SESSION['accountsId'] = $accountsId;
+                $_SESSION['accountsActivation'] = $accountsActivation;
+                $_SESSION['accountsUsername'] = $username;
+                $_SESSION['reglog'] = "login";
+                echo "<meta http-equiv=\"refresh\" content=\"0; URL=/helping_supplies/index.php\">";
+            } else {
+                $ErrMessage = "<font color=\"red\"><b>Ihr Account wurde noch nicht aktiviert.</b></font>";
+            }
         } else {
+            //Falsches Passwort
             $ErrCounter++;
         }
     } else {
+        //Falscher Name
         $ErrCounter++;
     }
     if ($ErrCounter != 0) {

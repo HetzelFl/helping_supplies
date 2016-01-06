@@ -10,9 +10,13 @@ if (isset($_SESSION['reglog'])) {
     if ($_SESSION['reglog'] != "") {
         $message = "";
         if ($_SESSION['reglog'] == "login") {
+            $messageAdmin = "";
+            if (isset($_SESSION['accountsAdmin'])) {
+                $messageAdmin = "<b>als Admin</b>";
+            }
             $message = "<h3>Sie sind eingeloggt</h3>
             <p>
-                Hallo " . $_SESSION['accountsUsername'] . "! <br> Sie haben sich erfolgreich eingeloggt.
+                Hallo " . $_SESSION['accountsUsername'] . "! <br> Sie haben sich erfolgreich " . $messageAdmin . " eingeloggt.
             </p>";
             $_SESSION['reglog'] = "";
         } elseif ($_SESSION['reglog'] == "reg") {
