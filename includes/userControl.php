@@ -1,5 +1,6 @@
 <?php
 
+require_once ($root . "/helping_supplies/includes/functions.php");
 session_start();
 
 if (isset($_SESSION['accountsId'])) {
@@ -19,7 +20,6 @@ if (isset($_SESSION['accountsId'])) {
     //Zufallszahl zur Vermeidung von Cookie Diebstahl.
     if ($_SESSION['accountsActivation'] == $accountsActivation & $accountsActive == TRUE) {
         //Wenn Cookie okay
-        require_once ($root . "/helping_supplies/includes/functions.php");
         $Aktivierungscode = zufallsstring(15);
 
         // Eintragen in DB
