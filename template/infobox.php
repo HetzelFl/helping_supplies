@@ -45,10 +45,10 @@ if (isset($_SESSION['reglog'])) {
             Sie haben sich erfolgreich ausgeloggt.
             </p>";
             session_destroy();
-        } elseif ($_SESSION['reglog'] == "contactFail") {
+        } elseif ($_SESSION['reglog'] == "noAccess") {
             $message = "<font color=\"red\"><h3>Bitte melden Sie sich an</h3></font>
             <p>
-                Um eine Nachricht zu senden müssen Sie sich einloggen.
+                Um alle Funktionen nutzen zu können müssen Sie sich anmelden.
             </p>
             <a href=\"/helping_supplies/registration/login.php\"><button class=\"button-primary\">Login</button></a>
             <a href=\"/helping_supplies/registration/reg.php\"><button class=\"button\">Regestrieren</button></a>";
@@ -57,6 +57,18 @@ if (isset($_SESSION['reglog'])) {
             $message = "<h3>Nachricht gesendet</h3>
             <p>
                 Sie haben Ihre Nachricht erfolgreich abgesendet.
+            </p>";
+            $_SESSION['reglog'] = "";
+        }elseif ($_SESSION['reglog'] == "aktualisiert") {
+            $message = "<h3>Aktualisiert</h3>
+            <p>
+                Sie haben Ihren Account erfolgreich aktualisiert.
+            </p>";
+            $_SESSION['reglog'] = "";
+        }elseif ($_SESSION['reglog'] == "PWAktualisiert") {
+            $message = "<h3>Passwort geändert</h3>
+            <p>
+                Sie haben Ihr Passwort erfolgreich geändert.
             </p>";
             $_SESSION['reglog'] = "";
         }

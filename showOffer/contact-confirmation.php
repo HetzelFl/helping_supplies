@@ -10,7 +10,7 @@ if (!isset($_POST['link'])) {
 }
 if (!isset($_SESSION['accountsId'])) {
     header('Location: ' . $_POST['link']);
-    $_SESSION['reglog'] = "contactFail";
+    $_SESSION['reglog'] = "noAccess";
     exit;
 }
 $title = filterfunktion($_POST["title"]);

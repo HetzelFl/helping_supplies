@@ -18,8 +18,6 @@ $Absender = "name@ihre-domain.de";
 if (isset($_REQUEST['Send'])) {
     $ErrCounter = 0;
 
-    require_once ($root . "/helping_supplies/includes/functions.php");
-
     $username = filterfunktion($_REQUEST["lName"]);
     $name = filterfunktion($_REQUEST["name"]);
     $password = filterfunktion($_REQUEST["password"]);
@@ -32,7 +30,9 @@ if (isset($_REQUEST['Send'])) {
 
         $passwordErr = "Passwörter stimmen nicht überein";
         $ErrCounter++;
-    }if (!filter_var($eMail, FILTER_VALIDATE_EMAIL)) {
+    }
+
+    if (!filter_var($eMail, FILTER_VALIDATE_EMAIL)) {
         $eMailErr = "Üngültige E-Mail";
         $ErrCounter++;
     }
