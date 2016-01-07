@@ -31,11 +31,12 @@ $db_link = mysqli_connect(
 
 if ($_REQUEST['typ'] == "orga") {
     $sql = "SELECT * FROM organisation_offer WHERE ID = '" . $_REQUEST['id'] . "'";
-    $db_erg = mysqli_query($db_link, $sql);
 } else {
     $sql = "SELECT * FROM deliverer_offer WHERE ID = '" . $_REQUEST['id'] . "'";
-    $db_erg = mysqli_query($db_link, $sql);
 }
+
+$db_erg = mysqli_query($db_link, $sql);
+
 $count = 0;
 $ErrMessage = "";
 $ErrCounter = 0;
@@ -47,8 +48,8 @@ while ($zeile = mysqli_fetch_array($db_erg, MYSQL_ASSOC)) {
     $startVillage = $zeile['startVillage'];
     $destinationCountry = $zeile['destinationCountry'];
     $destinationVillage = $zeile['destinationVillage'];
-    $startDate = $zeile['startDate'];
-    $endDate = $zeile['endDate'];
+    $startDate = reformDatetoNormal($zeile['startDate']);
+    $endDate = reformDatetoNormal($zeile['endDate']);
     $infoField = $zeile['textField'];
     if ($_REQUEST['typ'] == "orga") {
         $contact = $zeile['contact'];
@@ -80,37 +81,87 @@ while ($zeile = mysqli_fetch_array($db_erg, MYSQL_ASSOC)) {
     <table class="u-full-width">
         <tr>
             <th>Organisation</th>
-            <td>DRK</td>
-            <th>Kontaktperson</th>
-            <td>Fr. Hill</td>
+            <td><?php
+                echo $offerer;
+                ?></td>
+            <th>Kontaktperson</th><?php
+            if ($_REQUEST['typ'] == "orga") {
+                echo "<td>";
+                echo $contact;
+                echo "</td>";
+            }
+            ?>
         </tr>
         <tr>
             <th>Verfügbar ab</th>
-            <td>24.12.2015</td>
+            <td><?php
+                echo $startDate;
+                ?></td>
             <th>Verfügbar bis</th>
-            <td>18.9.2016</td>
+            <td><?php
+                echo $endDate;
+                ?></td>
         </tr>
         <tr>
             <th>Startland</th>
-            <td>Deutschland</td>
-            <th>Startstadt</th>
-            <td>Freiburg</td>
+            <td><?php
+                echo $startCountry;
+                ?></td>
+            <th>Startort</th>
+            <td><?php
+                echo $startVillage;
+                ?></td>
         </tr>
         <tr>
             <th>Zielland</th>
-            <td>Afghanistan</td>
-            <th>Zielstadt</th>
-            <td>Marjah</td>
+            <td><?php
+                echo $destinationCountry;
+                ?></td>
+            <th>Zielort</th>
+            <td><?php
+                echo $destinationVillage;
+                ?></td>
         </tr>
     </table>
-    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
-    <p><b>Zu transportierende Hilfsgüter:</b> Obst, Paul, Kleidung, Medekamente</p>
+    <p><?php
+        echo $infoField;
+        ?></p>
+
+
+
+    <p><b>Mögliche Hilfsgüter: </b><?php
+    $prodCount=0;
+        if ($_REQUEST['typ'] == "orga") {
+            $sql = "SELECT ID_product FROM productsorgajoin WHERE ID_organisationOffer = '" . $_REQUEST['id'] . "'";
+        } else {
+            $sql = "SELECT ID_product FROM productsdelivererjoin WHERE ID_delivererOffer = '" . $_REQUEST['id'] . "'";
+        }
+        $db_erg = mysqli_query($db_link, $sql);
+        while ($zeile = mysqli_fetch_array($db_erg, MYSQL_ASSOC)) {
+            if ($prodCount!=0){
+                echo ", ";
+            }
+            $prodCount++;
+            $ID = $zeile['ID_product'];
+            $sqlProd = "SELECT productname FROM products WHERE ID = '" . $ID . "'";
+            $db_ergProd = mysqli_query($db_link, $sqlProd);
+            while ($zeile = mysqli_fetch_array($db_ergProd, MYSQL_ASSOC)) {
+                echo $zeile['productname'];
+            }
+        }
+        ?></p>
+
+
     <form action="contact.php?id13,typ:oga" method="post" style="text-align:right;">
         <input class="button-primary" type="submit" value="Kontaktieren">
     </form>
 
     <div class="responsiveGMaps">
-        <iframe width="600" height="450" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=Afghanistan,Marjah&key=AIzaSyCP4tAaRU6nhhE0tdEtE3U3mqp1JJUgnwA" allowfullscreen></iframe>
+        <iframe width="600" height="450" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=<?php
+        echo $destinationCountry;
+        ?>,<?php
+                echo $destinationVillage;
+                ?>&key=AIzaSyCP4tAaRU6nhhE0tdEtE3U3mqp1JJUgnwA" allowfullscreen></iframe>
     </div>
 </div>
 
