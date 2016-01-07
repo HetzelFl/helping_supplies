@@ -9,7 +9,7 @@ $sqlStatement = "SELECT oo.id, oo.offerer, c1.countryName as startCountry, oo.st
                           . "join countries c1 on oo.startCountry = c1.id "
                           . "join countries c2 on oo.destinationCountry = c2.ID "
                           . "WHERE prod.ID = oo.ID "
-                          . "AND startDate >= Curdate() ";
+                          . "AND endDate >= Curdate() ";
 
 function filterNone(){
     
