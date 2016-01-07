@@ -34,7 +34,7 @@ if (isset($_POST["mailMe"])) {
     //TODO E-Mail ändern
     $Absender = "name@ihre-domain.de";
     //TODO aktivieren
-    mail($eMail, $reason . ": " . $title, "KOPIE IHRER NACHRICHT<br>" . $message, "FROM: $Absender");
+    //mail($eMail, $reason . ": " . $title, "KOPIE IHRER NACHRICHT<br>" . $message, "FROM: $Absender");
 }
 header('Location: ' . $_POST['link']);
 $_SESSION['reglog'] = "contactOk";

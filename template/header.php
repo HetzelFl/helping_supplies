@@ -31,7 +31,7 @@
                     echo "<li><a href='/helping_supplies/Admin/adminPanel_HTML.php'>Admin Panel</a></li>";
                 }
                 ?>
-                <li><a href='#'>Account</a></li>
+                <li><a href='/helping_supplies/account/edit-account.php'>Account</a></li>
                 <li><a href='/helping_supplies/registration/logout.php'>Logout</a></li>
                 <?php
             } else {
@@ -41,7 +41,7 @@
                 <?php
             }
             ?>
-            <li><a href='#'>Kontakt</a></li>
+            <li><a href='/helping_supplies/contact/contact.php'>Kontakt</a></li>
         </ul>
     </div>
 </div>
