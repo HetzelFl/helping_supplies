@@ -25,9 +25,6 @@ if ($_REQUEST['typ'] == "orga" OR $_REQUEST['typ'] == "deliver") {
 
 //Daten des Angebots aus DB holen
 require_once ($root . "/helping_supplies/includes/dbConnect.php");
-$db_link = mysqli_connect(
-        MYSQL_HOST, MYSQL_BENUTZER, MYSQL_KENNWORT, MYSQL_DATENBANK
-);
 
 if ($_REQUEST['typ'] == "orga") {
     $sql = "SELECT * FROM organisation_offer WHERE ID = '" . $_REQUEST['id'] . "'";
@@ -77,7 +74,13 @@ while ($zeile = mysqli_fetch_array($db_erg, MYSQL_ASSOC)) {
 ?>
 
 <div class="container">
-    <h1>DRK: Von Deutschland nach Afghanistan</h1>
+    <h1><?php
+        echo $offerer;
+        echo ": Von ";
+        echo $startCountry;
+        echo " nach ";
+        echo $destinationCountry;
+        ?></h1>
     <table class="u-full-width">
         <tr>
             <th>Organisation</th>
@@ -130,7 +133,7 @@ while ($zeile = mysqli_fetch_array($db_erg, MYSQL_ASSOC)) {
 
 
     <p><b>Mögliche Hilfsgüter: </b><?php
-    $prodCount=0;
+        $prodCount = 0;
         if ($_REQUEST['typ'] == "orga") {
             $sql = "SELECT ID_product FROM productsorgajoin WHERE ID_organisationOffer = '" . $_REQUEST['id'] . "'";
         } else {
@@ -138,7 +141,7 @@ while ($zeile = mysqli_fetch_array($db_erg, MYSQL_ASSOC)) {
         }
         $db_erg = mysqli_query($db_link, $sql);
         while ($zeile = mysqli_fetch_array($db_erg, MYSQL_ASSOC)) {
-            if ($prodCount!=0){
+            if ($prodCount != 0) {
                 echo ", ";
             }
             $prodCount++;
@@ -152,14 +155,31 @@ while ($zeile = mysqli_fetch_array($db_erg, MYSQL_ASSOC)) {
         ?></p>
 
 
-    <form action="contact.php?id13,typ:oga" method="post" style="text-align:right;">
+    <form action="contact.php" method="post" style="text-align:right;">
+        <input type="hidden" name="offerer" value="<?php
+        echo $offerer;
+        ?>">
+        <input type="hidden" name="startCountry" value="<?php
+        echo $startCountry;
+        ?>">
+        <input type="hidden" name="destinationCountry" value="<?php
+        echo $destinationCountry;
+        ?>">
+        <input type="hidden" name="eMail" value="<?php
+        echo $eMail;
+        ?>">
+        <input type="hidden" name="link" value="/helping_supplies/showOffer/showOffer.php?id=<?php
+        echo $_REQUEST['id'];
+        ?>&typ=<?php
+        echo $_REQUEST['typ'];
+        ?>">
         <input class="button-primary" type="submit" value="Kontaktieren">
     </form>
 
     <div class="responsiveGMaps">
         <iframe width="600" height="450" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=<?php
-        echo $destinationCountry;
-        ?>,<?php
+                echo $destinationCountry;
+                ?>,<?php
                 echo $destinationVillage;
                 ?>&key=AIzaSyCP4tAaRU6nhhE0tdEtE3U3mqp1JJUgnwA" allowfullscreen></iframe>
     </div>

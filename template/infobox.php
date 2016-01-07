@@ -25,13 +25,13 @@ if (isset($_SESSION['reglog'])) {
             Um die Registrierung abzuschließen, rufen Sie Ihr E-Mail-Postfach ab und klicken Sie auf den Aktivierungslink in der soeben an Sie versandten E-Mail.
             </p>";
             session_destroy();
-        }  elseif ($_SESSION['reglog'] == "reg-false") {
+        } elseif ($_SESSION['reglog'] == "reg-false") {
             $message = "<h3>Registrierung</h3>
             <p>
             Dieser Aktivierungslink ist nicht gültig.
             </p>";
             session_destroy();
-        }  elseif ($_SESSION['reglog'] == "reg-akti") {
+        } elseif ($_SESSION['reglog'] == "reg-akti") {
             $message = "<h3>Registrierung</h3>
             <p>
             Vielen Dank für Ihre Registrierung. Der Aktivierungsprozess ist nun abgeschlossen.
@@ -45,6 +45,20 @@ if (isset($_SESSION['reglog'])) {
             Sie haben sich erfolgreich ausgeloggt.
             </p>";
             session_destroy();
+        } elseif ($_SESSION['reglog'] == "contactFail") {
+            $message = "<font color=\"red\"><h3>Bitte melden Sie sich an</h3></font>
+            <p>
+                Um eine Nachricht zu senden müssen Sie sich einloggen.
+            </p>
+            <a href=\"/helping_supplies/registration/login.php\"><button class=\"button-primary\">Login</button></a>
+            <a href=\"/helping_supplies/registration/reg.php\"><button class=\"button\">Regestrieren</button></a>";
+            session_destroy();
+        }elseif ($_SESSION['reglog'] == "contactOk") {
+            $message = "<h3>Nachricht gesendet</h3>
+            <p>
+                Sie haben Ihre Nachricht erfolgreich abgesendet.
+            </p>";
+            $_SESSION['reglog'] = "";
         }
     } else {
         $up = "";
