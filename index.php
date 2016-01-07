@@ -21,7 +21,6 @@ include($root . "/helping_supplies/template/header.php");
     <p>Mehr Informationen zu PAUL finden sie in den Links in der Fußzeile dieser Seite</p> 
   </div>
 </div>
-
 <?php
 include($root . "/helping_supplies/template/footer.php");
 ?>

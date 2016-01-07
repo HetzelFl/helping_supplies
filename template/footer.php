@@ -14,7 +14,7 @@
                 <ul>
                     <li><a href="http://www.waterbackpack.org/" target="_blank">PAUL Wasserrucksack</a></li>
                     <li><a href="https://www.uni-kassel.de/fb14bau/institute/iwau/siedlungswasserwirtschaft/paul-wasserrucksack.html" target="_blank">Uni Kassel Projektseite</a></li>
-                    <li><a href="https://de.wikipedia.org/wiki/Wasserrucksack" target="_blank">PWikipedia</a></li>
+                    <li><a href="https://de.wikipedia.org/wiki/Wasserrucksack" target="_blank">Wikipedia</a></li>
                 </ul>
             </div>
           <!--  <div class="one-third column value">
@@ -28,3 +28,5 @@
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
 </body>
 </html>
+<?php
+include($root . "/helping_supplies/template/scrollInfo.php");
