@@ -5,7 +5,7 @@ include '../includes/dbConnectPDO.php';
 function create_Offer( $table, $name, $contact, $eMail, $startCountry, $startVillage,
                         $destinationCountry, $destinationVillage, $startDate, $endDate, $products, $accountID, $text)
 {
-    global $db;
+    global $db, $cName, $cContact, $ceMail, $cStartC, $cstartV, $cdestC, $cdestV, $cdateStart, $cdateEnd, $crespAcc, $cText;
     
     $tableName1 = $table;
     if($tableName1 == 'organisation_offer'){
@@ -16,17 +16,6 @@ function create_Offer( $table, $name, $contact, $eMail, $startCountry, $startVil
     }
     $tableName3 = 'countries';
     //Colums for the table organisation_offer:
-    $cName = 'offerer';
-    $cContact = 'contact';
-    $ceMail = 'eMail';
-    $cStartC = 'startCountry';
-    $cstartV = 'startVillage';
-    $cdestC = 'destinationCountry';
-    $cdestV = 'destinationVillage';
-    $cdateStart = 'startDate';
-    $cdateEnd = 'endDate';
-    $crespAcc = 'responsibleAcc';
-    $cText = 'textField';
     
     try{
         $statement00 = $db->prepare("SELECT ID FROM $tableName3 WHERE countryName LIKE '$startCountry'");

@@ -1,11 +1,11 @@
 <?php
 
 include '../includes/dbConnectPDO.php';
-
+    
 function edit_Offer( $table, $id, $name, $contact, $eMail, $startCountry, $startVillage,
                         $destinationCountry, $destinationVillage, $startDate, $endDate, $products, $text)
 {
-    global $db;
+    global $db, $cID, $cName, $cContact, $ceMail, $cStartC, $cstartV, $cdestC, $cdestV, $cdateStart, $cdateEnd, $crespAcc, $cText;
     
     $tableOffer = $table;
     if($tableOffer == 'organisation_offer'){
@@ -17,19 +17,7 @@ function edit_Offer( $table, $id, $name, $contact, $eMail, $startCountry, $start
         $cJoinOfferID = 'ID_delivererOffer';
     }
     $tableCountry = 'countries';
-    //Colums for the table organisation_offer:
-    $cID = 'ID';
-    $cName = 'offerer';
-    $cContact = 'contact';
-    $ceMail = 'eMail';
-    $cStartC = 'startCountry';
-    $cstartV = 'startVillage';
-    $cdestC = 'destinationCountry';
-    $cdestV = 'destinationVillage';
-    $cdateStart = 'startDate';
-    $cdateEnd = 'endDate';
-    $crespAcc = 'responsibleAcc';
-    $cText = 'textField';
+
     
     try{
         $statement00 = $db->prepare("SELECT ID FROM $tableCountry WHERE countryName LIKE '$startCountry'");
