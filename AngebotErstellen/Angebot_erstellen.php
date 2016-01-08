@@ -38,7 +38,6 @@ function create_Offer( $table, $name, $contact, $eMail, $startCountry, $startVil
             $statement1->execute(array($name, $eMail, $startCountry1, $startVillage,
                             $destinationCountry1, $destinationVillage, $startDate, $endDate, $accountID, $text ));
         }
-        //TODO /*$_SESSION["accountID"]*/ (siehe Zeile darüber)
         $lastInsertID = $db->lastInsertId();
 
         foreach ($products as $p){
