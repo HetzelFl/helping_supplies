@@ -15,8 +15,8 @@ include($root . "/helping_supplies/template/header.php");
     <p>Jetzt kommt aber diese Seite ins Spiel: Organisationen können ihre Angebote eintragen und interessierte und hilfsbereite Reisende 
     können darauf antworten. Im umgekehrten Fall können Reisende ihre Pläne eintragen und Organisationen können darauf reagieren 
     und den Helfer kontaktieren.</p>
-    <p>Nach dem Motto "Get together - Help together" kommen hilsbereite Menschen zusammen und helfen gemeinsam diese Welt ein bisschen 
-    besser zu machen. Das Projekt war ursprünglich dazu gedacht nur das Hilsfgut PAUL zu unterstützen, weshalb diese Seite seinen Fokus 
+    <p>Nach dem Motto "Get together - Help together" kommen hilfsbereite Menschen zusammen und helfen gemeinsam diese Welt ein bisschen 
+    besser zu machen. Das Projekt war ursprünglich dazu gedacht nur das Hilfsgut PAUL zu unterstützen, weshalb diese Seite seinen Fokus 
     auf dieses Produkt legt. Nichtsdestotrotz können Helfer und Organisationen auch andere Güter eintragen.</p>
     <p>Mehr Informationen zu PAUL finden sie in den Links in der Fußzeile dieser Seite</p> 
   </div>
