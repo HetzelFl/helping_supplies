@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Erstellungszeit: 06. Jan 2016 um 10:22
+-- Erstellungszeit: 17. Jan 2016 um 17:24
 -- Server-Version: 10.0.17-MariaDB
 -- PHP-Version: 5.6.14
 
@@ -43,10 +43,10 @@ CREATE TABLE `accounts` (
 --
 
 INSERT INTO `accounts` (`ID`, `username`, `passwort`, `email`, `name`, `website`, `activation`, `active`, `admin`) VALUES
-(1, 'user1', '$2y$10$3w.1RUCt3XdI0n.5sKLH0.IGLbkYCXp3frhfUAnVv9uQZJBAp.adG', 'org1@test.de', 'orga1', NULL, '=I8j3eB8hNpvvdb', 1, 0),
+(1, 'user1', '$2y$10$3w.1RUCt3XdI0n.5sKLH0.IGLbkYCXp3frhfUAnVv9uQZJBAp.adG', 'org1@test.de', 'DRK', NULL, 'O0QCAaYNm!G!M5m', 1, 0),
 (2, 'user2', '$2y$10$pRJw7mTNA0ToI7D6PP48T.ljF7dU.K7OClK64Ma9Gyr7FtcQJMhIy', 'priv1@test.de', 'priv1', NULL, 'mZrW9Bvt5l67XBO', 1, 0),
 (3, 'reg_Test', '$2y$10$Mj8VvjH0QhQ9fvc95YvaBecDp93dMuMVBNK3uu6prEMvjN9xcviQS', 'reg@test.de', 'Reg Test', NULL, 'QozRzqfz6bkGxkx', 1, 0),
-(4, 'admin', '$2y$10$7Yh0Vx/khWesYZ1k/CxLIOrSV1HHgAMJhKwDyIbQZvTtJJDGX6UN2', 'admin@test.de', 'Admin', NULL, 'iSkXltqDkOnu.4H', 1, 1),
+(4, 'admin', '$2y$10$7Yh0Vx/khWesYZ1k/CxLIOrSV1HHgAMJhKwDyIbQZvTtJJDGX6UN2', 'admin@test.de', 'Admin', NULL, '5VvlfQ(LYB8w)8L', 1, 1),
 (5, 'reg_test2', '$2y$10$eEQIfICcSkpbaiAdJsXQUOSd8BZLyXFd0TzG.DzDgcoeyLRE23Cfu', 'reg2@test.de', 'Test 2', NULL, 'BMIlKy4a15sUsrk', 0, 0);
 
 -- --------------------------------------------------------
@@ -329,8 +329,8 @@ CREATE TABLE `deliverer_offer` (
 --
 
 INSERT INTO `deliverer_offer` (`ID`, `offerer`, `eMail`, `startCountry`, `startVillage`, `destinationCountry`, `destinationVillage`, `startDate`, `endDate`, `responsibleAcc`, `textField`) VALUES
-(4, 'orga', 'usero@hfu.de', 6, 'sdfgsdfg', 4, 'asdgsadg', '1753-01-01', '1753-01-01', 1, 'asdgasdg'),
-(5, 'orgaorga', 'usero@hfu.de', 6, 'sdfgsdfg', 4, 'asdgsadg', '2020-12-12', '2021-12-12', 2, 'asdgasdg');
+(1, 'DRK-Nord', 'org1@test.de', 43, 'Berlin', 202, 'Aleppo', '2016-01-23', '2016-01-24', 1, 'Wir befördern am 23.01. Hilfsgüter nach Aleppo und haben noch Platz für den Transport von weiteren Hilfsgütern. Für genauere Informationen wenden Sie sich bitte an uns.'),
+(2, 'DRK', 'org1@test.de', 142, 'Kathmandu', 155, 'Wien', '2016-02-21', '2016-02-22', 1, 'Wir bringen Krisenhelfer von Nepal zurück nach Deutschland. Für den Flug haben wir noch 2 Plätze für andere Krisenhelfer zu vergeben. Zielflughafen ist Wien und von dort aus mit dem Zug nach München. Die Kosten für den Zug müssten Sie selbst tragen.\rWichtig: Bitte weißen Sie nach dass Sie bei der aktuellen Krise mitgeholfen haben.\rFür Abflugzeit und weitere Fragen melden Sie sich bitte möglichst bald.');
 
 -- --------------------------------------------------------
 
@@ -358,21 +358,8 @@ CREATE TABLE `organisation_offer` (
 --
 
 INSERT INTO `organisation_offer` (`ID`, `offerer`, `contact`, `eMail`, `startCountry`, `startVillage`, `destinationCountry`, `destinationVillage`, `startDate`, `endDate`, `responsibleAcc`, `textField`) VALUES
-(5, 'orga', 'sdagasdg', 'usero@hfu.de', 5, 'asdgsadg', 4, 'asdgsadg', '1753-01-01', '1753-01-01', 1, 'asdgasdgsdg'),
-(6, 'orgaorga', 'asdgsadg', 'usero@hfu.de', 9, 'asdgasdgasdg', 12, 'asdgsdg', '2020-12-12', '2021-12-12', 2, 'asdgasdhsdfh'),
-(7, 'orgaa', 'asdgasdg', 'usero@hfu.de', 7, 'asdgasdg', 14, 'asdgasdg', '2020-12-12', '2021-12-12', 1, 'asdgasdgasdg'),
-(8, 'orgaaa', 'asdgasdg', 'usero@hfu.de', 7, 'asdgasdg', 14, 'asdgasdg', '2020-12-12', '2021-12-12', 1, 'asdgasdgasdg'),
-(9, 'orgaaaa', 'asdgasdg', 'usero@hfu.de', 7, 'asdgasdg', 14, 'asdgasdg', '2020-12-12', '2021-12-12', 1, 'asdgasdgasdg'),
-(10, 'orgaaaaa', 'asdgasdg', 'usero@hfu.de', 7, 'asdgasdg', 14, 'asdgasdg', '2020-12-12', '2021-12-12', 1, 'asdgasdgasdg'),
-(11, 'orgaaaaaa', 'asdgasdg', 'usero@hfu.de', 7, 'asdgasdg', 14, 'asdgasdg', '2020-12-12', '2021-12-12', 1, 'asdgasdgasdg'),
-(12, 'orgaaaaaaa', 'asdgasdg', 'usero@hfu.de', 7, 'asdgasdg', 14, 'asdgasdg', '2020-12-12', '2021-12-12', 1, 'asdgasdgasdg'),
-(13, 'orgaaaaaaaa', 'asdgasdg', 'usero@hfu.de', 7, 'asdgasdg', 14, 'asdgasdg', '2020-12-12', '2021-12-12', 1, 'asdgasdgasdg'),
-(14, 'orgaaaaaaaaa', 'asdgasdg', 'usero@hfu.de', 7, 'asdgasdg', 14, 'asdgasdg', '2020-12-12', '2021-12-12', 1, 'asdgasdgasdg'),
-(15, 'orgaaaaaaaaaa', 'asdgasdg', 'usero@hfu.de', 7, 'asdgasdg', 14, 'asdgasdg', '2020-12-12', '2021-12-12', 1, 'asdgasdgasdg'),
-(16, 'orgaaaaaaaaaaa', 'asdgasdg', 'usero@hfu.de', 7, 'asdgasdg', 14, 'asdgasdg', '2020-12-12', '2021-12-12', 1, 'asdgasdgasdg'),
-(17, 'orgaaaaaaaaaaaa', 'asdgasdg', 'usero@hfu.de', 7, 'asdgasdg', 14, 'asdgasdg', '2020-12-12', '2021-12-12', 1, 'asdgasdgasdg'),
-(18, 'orgaaaaaaaaaaaaa', 'asdgasdg', 'usero@hfu.de', 7, 'asdgasdg', 14, 'asdgasdg', '2020-12-12', '2021-12-12', 1, 'asdgasdgasdg'),
-(19, 'orgaaaaaaaaaaaaaa', 'asdgasdg', 'usero@hfu.de', 7, 'asdgasdg', 14, 'asdgasdg', '2020-12-12', '2021-12-12', 1, 'asdgasdgasdg');
+(1, 'DRK', 'Fr Hill', 'org1@test.de', 43, 'München Flughafen', 215, 'Antakya', '2016-01-17', '2016-03-21', 1, 'An der türkisch/syrischen Grenze befinden sich viele Flüchtlinge. Um diesen Menschen zu helfen stellen wir 3 Paul’s zur Verfügung. Außerdem sollen 50 Schulbücher transportiert werden um auch in Krisenzeiten den Kindern eine Zukunft durch Bildung zu ermöglichen.\rBei weiteren Fragen oder Interesse wenden Sie sich bitte an Frau Hill mit dem Betreff „Paul-Türkei-Syrien“. Vielen Dank.'),
+(2, 'DRK-BW', 'Fr Martin', 'org1@test.de', 43, 'Freiburg', 197, 'Victoria West', '2016-02-23', '2016-02-26', 1, 'Wir benötigen Hilfe beim Transport von Antibiotika nach Süd Afrika für eines unserer Hilfsprojekte.\rSie werden von zwei unserer Mitarbeiter begleitet und es wird für sie eine kostenfreie Übernachtungsmöglichkeit zur Verfügung gestellt. Zum Transport verwenden wir drei Fahrzeuge mit je zwei Fahrern, daher benötigen Sie eine gültige Fahrerlaubnis. Eine Woche vor Abreise findet in unserer Niederlassung in Freiburg eine Schulung statt um Sie für die Reise vorzubereiten.\rFür weitere Informationen wie empfohlene Impfungen und die nötigen Papiere melden Sie sich bitte über das Kontaktformular bei uns.');
 
 -- --------------------------------------------------------
 
@@ -411,12 +398,11 @@ CREATE TABLE `productsdelivererjoin` (
 --
 
 INSERT INTO `productsdelivererjoin` (`ID_product`, `ID_delivererOffer`) VALUES
-(1, 4),
-(1, 5),
-(2, 4),
-(2, 5),
-(3, 4),
-(4, 4);
+(1, 1),
+(2, 1),
+(3, 1),
+(4, 1),
+(4, 2);
 
 -- --------------------------------------------------------
 
@@ -434,38 +420,9 @@ CREATE TABLE `productsorgajoin` (
 --
 
 INSERT INTO `productsorgajoin` (`ID_product`, `ID_organisationOffer`) VALUES
-(1, 5),
-(1, 7),
-(1, 8),
-(1, 9),
-(1, 10),
-(1, 11),
-(1, 12),
-(1, 13),
-(1, 14),
-(1, 15),
-(1, 17),
-(1, 18),
-(1, 19),
-(2, 5),
-(2, 7),
-(2, 8),
-(2, 9),
-(2, 10),
-(2, 11),
-(2, 12),
-(2, 13),
-(2, 14),
-(2, 15),
-(2, 16),
-(2, 17),
-(2, 18),
-(2, 19),
-(3, 6),
-(3, 10),
-(3, 19),
-(4, 12),
-(4, 18);
+(1, 1),
+(3, 2),
+(4, 2);
 
 --
 -- Indizes der exportierten Tabellen
@@ -544,12 +501,12 @@ ALTER TABLE `countries`
 -- AUTO_INCREMENT für Tabelle `deliverer_offer`
 --
 ALTER TABLE `deliverer_offer`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT für Tabelle `organisation_offer`
 --
 ALTER TABLE `organisation_offer`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT für Tabelle `products`
 --
