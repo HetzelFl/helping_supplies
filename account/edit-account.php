@@ -21,10 +21,12 @@ if (isset($_REQUEST['Send'])) {
     $username = filterfunktion($_REQUEST["lName"]);
     $name = filterfunktion($_REQUEST["name"]);
     $eMail = filterfunktion($_REQUEST["eMail"]);
+    $oldUsername = filterfunktion($_REQUEST["oldUsername"]);
+    $oldName = filterfunktion($_REQUEST["oldName"]);
     $oldEMail = filterfunktion($_REQUEST["oldEMail"]);
     $website = filterfunktion($_REQUEST["website"]);
 
-    if (!filter_var($eMail, FILTER_VALIDATE_EMAIL)) {
+    if (!check_email($eMail)) {
         $eMailErr = "Üngültige E-Mail";
         $ErrCounter++;
     }
@@ -34,12 +36,16 @@ if (isset($_REQUEST['Send'])) {
     while ($zeile = mysqli_fetch_array($db_erg, MYSQL_ASSOC)) {
 
         if ($zeile['username'] == $username) {
-            $usernameErr = "Login Name bereits vergeben";
-            $ErrCounter++;
+            if ($username != $oldUsername) {
+                $usernameErr = "Login Name bereits vergeben";
+                $ErrCounter++;
+            }
         }
         if ($zeile['name'] == $name) {
-            $nameErr = "Name bereits vergeben";
-            $ErrCounter++;
+            if ($name != $oldName) {
+                $nameErr = "Name bereits vergeben";
+                $ErrCounter++;
+            }
         }
         if ($zeile['email'] == $eMail) {
             if ($eMail != $oldEMail) {
@@ -48,11 +54,13 @@ if (isset($_REQUEST['Send'])) {
             }
         }
     }
+    if ($eMail != $oldEMail OR $name != $oldName OR $username != $oldUsername) {
 
-    if ($ErrCounter == 0) {
-        $sql = "UPDATE `accounts` SET `username` = '" . $username . "', `email` = '" . $eMail . "', `name` = '" . $name . "', `website` = '" . $website . "' WHERE `ID` = " . $_SESSION['accountsId'] . ";";
-        mysqli_query($db_link, $sql);
-        $_SESSION['reglog'] = "aktualisiert";
+        if ($ErrCounter == 0) {
+            $sql = "UPDATE `accounts` SET `username` = '" . $username . "', `email` = '" . $eMail . "', `name` = '" . $name . "', `website` = '" . $website . "' WHERE `ID` = " . $_SESSION['accountsId'] . ";";
+            mysqli_query($db_link, $sql);
+            $_SESSION['reglog'] = "aktualisiert";
+        }
     }
 }
 
@@ -76,6 +84,12 @@ include($root . "/helping_supplies/template/header.php");
             <tr><td>Angezeigter Name:</td><td><input maxlength="255" name="name" value="<?php echo $name; ?>" type="text" required="required"></td><td><font color="red"><b><?php echo $nameErr; ?></b></font></td></tr>
             <tr><td>E-Mail:</td><td><input maxlength="50" name="eMail" value="<?php echo $eMail; ?>" type="email" required="required"></td><td><font color="red"><b><?php echo $eMailErr; ?></b></font></td></tr>
             <tr><td>Website:</td><td><input maxlength="100" name="website" value="<?php echo $website; ?>" type="text"></td><td><font color="red"><b><?php echo $websiteErr; ?></b></font></td></tr>
+            <input type="hidden" name="oldUsername" value="<?php
+            echo $username;
+            ?>">
+            <input type="hidden" name="oldName" value="<?php
+            echo $name;
+            ?>">
             <input type="hidden" name="oldEMail" value="<?php
             echo $eMail;
             ?>">
