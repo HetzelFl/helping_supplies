@@ -101,9 +101,9 @@ if(getColumnData($id, 'responsibleAcc') != $accountID){
             <p><input type="text" name="startVillage" required="required" value=
                 <?php
                 if(!isset($_POST['startVillage']))
-                    echo getColumnData($id, 'startVillage');
+                    echo "\"" . getColumnData($id, 'startVillage'). "\"";
                 else
-                    echo $startVillage;
+                    echo "\"" . $startVillage . "\"";
                 ?>>
                 <span class="error"> <?php echo $startVErr;?></span>
             </p>
@@ -137,9 +137,9 @@ if(getColumnData($id, 'responsibleAcc') != $accountID){
             <p><input type="text" name="destVillage" required="required" value=
                 <?php
                 if(!isset($_POST['destVillage']))
-                    echo getColumnData($id, 'destinationVillage');
+                    echo "\"" . getColumnData($id, 'destinationVillage') . "\"";
                 else
-                    echo $destVillage;
+                    echo "\"" . $destVillage . "\"";
                 ?>>
                 <span class="error"> <?php echo $destVErr;?></span>
             </p>
