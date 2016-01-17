@@ -32,7 +32,7 @@ if (isset($_REQUEST['Send'])) {
         $ErrCounter++;
     }
 
-    if (!filter_var($eMail, FILTER_VALIDATE_EMAIL)) {
+    if (!check_email($eMail)) {
         $eMailErr = "Üngültige E-Mail";
         $ErrCounter++;
     }
