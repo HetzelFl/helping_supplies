@@ -330,7 +330,9 @@ CREATE TABLE `deliverer_offer` (
 
 INSERT INTO `deliverer_offer` (`ID`, `offerer`, `eMail`, `startCountry`, `startVillage`, `destinationCountry`, `destinationVillage`, `startDate`, `endDate`, `responsibleAcc`, `textField`) VALUES
 (1, 'DRK-Nord', 'org1@test.de', 43, 'Berlin', 202, 'Aleppo', '2016-01-23', '2016-01-24', 1, 'Wir befördern am 23.01. Hilfsgüter nach Aleppo und haben noch Platz für den Transport von weiteren Hilfsgütern. Für genauere Informationen wenden Sie sich bitte an uns.'),
-(2, 'DRK', 'org1@test.de', 142, 'Kathmandu', 155, 'Wien', '2016-02-21', '2016-02-22', 1, 'Wir bringen Krisenhelfer von Nepal zurück nach Deutschland. Für den Flug haben wir noch 2 Plätze für andere Krisenhelfer zu vergeben. Zielflughafen ist Wien und von dort aus mit dem Zug nach München. Die Kosten für den Zug müssten Sie selbst tragen.\rWichtig: Bitte weißen Sie nach dass Sie bei der aktuellen Krise mitgeholfen haben.\rFür Abflugzeit und weitere Fragen melden Sie sich bitte möglichst bald.');
+(2, 'DRK', 'org1@test.de', 142, 'Kathmandu', 155, 'Wien', '2016-02-21', '2016-02-22', 1, 'Wir bringen Krisenhelfer von Nepal zurück nach Deutschland. Für den Flug haben wir noch 2 Plätze für andere Krisenhelfer zu vergeben. Zielflughafen ist Wien und von dort aus mit dem Zug nach München. Die Kosten für den Zug müssten Sie selbst tragen.\rWichtig: Bitte weißen Sie nach dass Sie bei der aktuellen Krise mitgeholfen haben.\rFür Abflugzeit und weitere Fragen melden Sie sich bitte möglichst bald.'),
+(3, 'Caritas Freiburg', 'priv1@test.de', 43, 'Freiburg', 63, 'Yendi', '2016-07-27', '2016-08-07', 2, 'Dies ist ein Testeintrag um die Funktion aufzuzeigen. Dies ist ein Text, den Organisationen/Helfer hinterlegen, um Interessierten mehr Informationen bezüglich des Angebots zu geben.\r\rDieses Feld ist optional.'),
+(4, 'Caritas Hamburg', 'priv1@test.de', 43, 'Hamburg', 31, 'Sinop', '2016-04-13', '2016-04-27', 2, 'Dies ist ein Testeintrag um die Funktion aufzuzeigen. Dies ist ein Text, den Organisationen/Helfer hinterlegen, um Interessierten mehr Informationen bezüglich des Angebots zu geben.\r\rDieses Feld ist optional.');
 
 -- --------------------------------------------------------
 
@@ -359,7 +361,10 @@ CREATE TABLE `organisation_offer` (
 
 INSERT INTO `organisation_offer` (`ID`, `offerer`, `contact`, `eMail`, `startCountry`, `startVillage`, `destinationCountry`, `destinationVillage`, `startDate`, `endDate`, `responsibleAcc`, `textField`) VALUES
 (1, 'DRK', 'Fr Hill', 'org1@test.de', 43, 'München Flughafen', 215, 'Antakya', '2016-01-17', '2016-03-21', 1, 'An der türkisch/syrischen Grenze befinden sich viele Flüchtlinge. Um diesen Menschen zu helfen stellen wir 3 Paul’s zur Verfügung. Außerdem sollen 50 Schulbücher transportiert werden um auch in Krisenzeiten den Kindern eine Zukunft durch Bildung zu ermöglichen.\rBei weiteren Fragen oder Interesse wenden Sie sich bitte an Frau Hill mit dem Betreff „Paul-Türkei-Syrien“. Vielen Dank.'),
-(2, 'DRK-BW', 'Fr Martin', 'org1@test.de', 43, 'Freiburg', 197, 'Victoria West', '2016-02-23', '2016-02-26', 1, 'Wir benötigen Hilfe beim Transport von Antibiotika nach Süd Afrika für eines unserer Hilfsprojekte.\rSie werden von zwei unserer Mitarbeiter begleitet und es wird für sie eine kostenfreie Übernachtungsmöglichkeit zur Verfügung gestellt. Zum Transport verwenden wir drei Fahrzeuge mit je zwei Fahrern, daher benötigen Sie eine gültige Fahrerlaubnis. Eine Woche vor Abreise findet in unserer Niederlassung in Freiburg eine Schulung statt um Sie für die Reise vorzubereiten.\rFür weitere Informationen wie empfohlene Impfungen und die nötigen Papiere melden Sie sich bitte über das Kontaktformular bei uns.');
+(2, 'DRK-BW', 'Fr Martin', 'org1@test.de', 43, 'Freiburg', 197, 'Victoria West', '2016-02-23', '2016-02-26', 1, 'Wir benötigen Hilfe beim Transport von Antibiotika nach Süd Afrika für eines unserer Hilfsprojekte.\rSie werden von zwei unserer Mitarbeiter begleitet und es wird für sie eine kostenfreie Übernachtungsmöglichkeit zur Verfügung gestellt. Zum Transport verwenden wir drei Fahrzeuge mit je zwei Fahrern, daher benötigen Sie eine gültige Fahrerlaubnis. Eine Woche vor Abreise findet in unserer Niederlassung in Freiburg eine Schulung statt um Sie für die Reise vorzubereiten.\rFür weitere Informationen wie empfohlene Impfungen und die nötigen Papiere melden Sie sich bitte über das Kontaktformular bei uns.'),
+(3, 'Caritas', 'Herr Müller', 'priv1@test.de', 43, 'Berlin', 79, 'Talao', '2016-02-21', '2016-05-15', 2, 'Dies ist ein Testeintrag um die Funktion aufzuzeigen. Dies ist ein Text, den Organisationen/Helfer hinterlegen, um Interessierten mehr Informationen bezüglich des Angebots zu geben.\r\rDieses Feld ist optional.'),
+(4, 'Caritas', 'Frau Gutmensch', 'Frau.Gut@test.de', 43, 'Freiburg', 142, 'Beni', '2016-05-01', '2016-08-31', 2, 'Dies ist ein Testeintrag um die Funktion aufzuzeigen. Dies ist ein Text, den Organisationen/Helfer hinterlegen, um Interessierten mehr Informationen bezüglich des Angebots zu geben.\r\rDieses Feld ist optional.');
+
 
 -- --------------------------------------------------------
 
@@ -402,7 +407,18 @@ INSERT INTO `productsdelivererjoin` (`ID_product`, `ID_delivererOffer`) VALUES
 (2, 1),
 (3, 1),
 (4, 1),
-(4, 2);
+(4, 2),
+(1, 3),
+(1, 4),
+(2, 3),
+(2, 4),
+(3, 3),
+(3, 4),
+(4, 3),
+(4, 4);
+
+
+	
 
 -- --------------------------------------------------------
 
@@ -422,7 +438,11 @@ CREATE TABLE `productsorgajoin` (
 INSERT INTO `productsorgajoin` (`ID_product`, `ID_organisationOffer`) VALUES
 (1, 1),
 (3, 2),
-(4, 2);
+(4, 2),
+(1, 4),
+(2, 3),
+(3, 3),
+(4, 4);
 
 --
 -- Indizes der exportierten Tabellen
