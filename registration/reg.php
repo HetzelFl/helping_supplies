@@ -11,7 +11,7 @@ if (isset($_SESSION['accountsId'])) {
 //define variables and set to empty values
 $usernameErr = $nameErr = $eMailErr = $passwordErr = "";
 $ErrCounter = 1;
-
+$username = $name = $eMail = "";
 //TODO E-Mail ändern
 $Absender = "name@ihre-domain.de";
 
@@ -27,8 +27,22 @@ if (isset($_REQUEST['Send'])) {
     if ($password == $password2) {
         $password = password_hash($password, PASSWORD_BCRYPT);
     } else {
-
         $passwordErr = "Passwörter stimmen nicht überein";
+        $ErrCounter++;
+    }
+
+    if (!preg_match('/^(?=.*\d)(?=.*[A-Za-z])[0-9A-Za-z!@#$%]{8,50}$/', $password)) {
+        $passwordErr = "Passwörter müssen aus mindestens 8 Zeichen, einem Buchstaben und einer Zahl bestehen";
+        $ErrCounter++;
+    }
+
+    if (strlen($username) > 4) {
+        $usernameErr = "Der Login Name muss mindestens 4 Zeichen besitzen";
+        $ErrCounter++;
+    }
+    
+        if (strlen($name) > 4) {
+        $nameErr = "Der Name muss mindestens 4 Zeichen besitzen";
         $ErrCounter++;
     }
 
@@ -79,11 +93,11 @@ if ($ErrCounter > 0) {
         <h1>Regestrierung</h1>
         <form action="" method="post">
             <table class="u-full-width">
-                <tr><td>Login Name:</td><td><input maxlength="50" name="lName" type="text" required="required"></td><td><font color="red"><b><?php echo $usernameErr; ?></b></font></td></tr>
-                <tr><td>Angezeigter Name:</td><td><input maxlength="255" name="name" type="text" required="required"></td><td><font color="red"><b><?php echo $nameErr; ?></b></font></td></tr>
+                <tr><td>Login Name:</td><td><input maxlength="50" name="lName" type="text" value="<?php echo $username; ?>" required="required"></td><td><font color="red"><b><?php echo $usernameErr; ?></b></font></td></tr>
+                <tr><td>Angezeigter Name:</td><td><input maxlength="255" name="name" type="text" value="<?php echo $name; ?>" required="required"></td><td><font color="red"><b><?php echo $nameErr; ?></b></font></td></tr>
                 <tr><td>Passwort:</td><td><input maxlength="255" name="password" type="password" required="required"></td><td><font color="red"><b><?php echo $passwordErr; ?></b></font></td></tr>
                 <tr><td>Passwort Wiederholung:</td><td><input maxlength="255" name="password2" type="password" required="required"></td><td><font color="red"><b><?php echo $passwordErr; ?></b></font></td></tr>
-                <tr><td>E-Mail:</td><td><input maxlength="50" name="eMail" type="email" required="required"></td><td><font color="red"><b><?php echo $eMailErr; ?></b></font></td></tr>
+                <tr><td>E-Mail:</td><td><input maxlength="50" name="eMail" type="email" value="<?php echo $eMail; ?>" required="required"></td><td><font color="red"><b><?php echo $eMailErr; ?></b></font></td></tr>
                 <tr><td><input name="Send" type="submit" value="Absenden" class="button-primary"></td>
             </table>
         </form>

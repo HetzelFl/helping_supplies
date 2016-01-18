@@ -48,6 +48,8 @@ while ($zeile = mysqli_fetch_array($db_erg, MYSQL_ASSOC)) {
     $startDate = reformDatetoNormal($zeile['startDate']);
     $endDate = reformDatetoNormal($zeile['endDate']);
     $infoField = $zeile['textField'];
+    //Sorgt für korrekte Zeilenumbrüche
+    $infoField = ereg_replace ("/\r\n|\n\r|\r|\n/", "<br>", $infoField);
     if ($_REQUEST['typ'] == "orga") {
         $contact = $zeile['contact'];
     }
@@ -171,8 +173,8 @@ while ($zeile = mysqli_fetch_array($db_erg, MYSQL_ASSOC)) {
         <input type="hidden" name="link" value="/helping_supplies/showOffer/showOffer.php?id=<?php
         echo $_REQUEST['id'];
         ?>&typ=<?php
-        echo $_REQUEST['typ'];
-        ?>">
+               echo $_REQUEST['typ'];
+               ?>">
         <input class="button-primary" type="submit" value="Kontaktieren">
     </form>
 
