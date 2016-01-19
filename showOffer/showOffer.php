@@ -49,7 +49,7 @@ while ($zeile = mysqli_fetch_array($db_erg, MYSQL_ASSOC)) {
     $endDate = reformDatetoNormal($zeile['endDate']);
     $infoField = $zeile['textField'];
     //Sorgt für korrekte Zeilenumbrüche
-    $infoField = ereg_replace ("/\r\n|\n\r|\r|\n/", "<br>", $infoField);
+    $infoField = preg_replace("/\r\n|\n\r|\r|\n/", "<br>", $infoField);
     if ($_REQUEST['typ'] == "orga") {
         $contact = $zeile['contact'];
     }
