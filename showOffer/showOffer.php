@@ -3,7 +3,7 @@ $root = $_SERVER['DOCUMENT_ROOT'];
 //include head and header
 include($root . "/helping_supplies/template/head.php");
 include($root . "/helping_supplies/template/header.php");
-include($root . "/helping_supplies/includes/gMaps.php");
+require_once ($root . "/helping_supplies/includes/gMaps.php");
 
 if (!isset($_REQUEST['id']) OR ! isset($_REQUEST['typ'])) {
     echo "<meta http-equiv=\"refresh\" content=\"0; URL=/helping_supplies/index.php\">";
