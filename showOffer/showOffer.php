@@ -3,6 +3,7 @@ $root = $_SERVER['DOCUMENT_ROOT'];
 //include head and header
 include($root . "/helping_supplies/template/head.php");
 include($root . "/helping_supplies/template/header.php");
+include($root . "/helping_supplies/includes/gMaps.php");
 
 if (!isset($_REQUEST['id']) OR ! isset($_REQUEST['typ'])) {
     echo "<meta http-equiv=\"refresh\" content=\"0; URL=/helping_supplies/index.php\">";
@@ -183,7 +184,11 @@ while ($zeile = mysqli_fetch_array($db_erg, MYSQL_ASSOC)) {
                 echo $destinationCountry;
                 ?>,<?php
                 echo $destinationVillage;
-                ?>&key=AIzaSyCP4tAaRU6nhhE0tdEtE3U3mqp1JJUgnwA" allowfullscreen></iframe>
+                ?>&key=<?php
+                
+                echo $gmapsAccess;
+                ?>" allowfullscreen></iframe>
+
     </div>
 </div>
 
