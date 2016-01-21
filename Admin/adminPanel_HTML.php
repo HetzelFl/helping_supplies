@@ -301,5 +301,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
     </table>
 
 </div>
-</body>
-</html>
+<?php
+//include footer
+include_once ($root . "/helping_supplies/template/footer.php");
