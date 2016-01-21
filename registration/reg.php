@@ -90,7 +90,7 @@ if (isset($_REQUEST['Send'])) {
 if ($ErrCounter > 0) {
     ?>
     <div class="container">
-        <h1>Regestrierung</h1>
+        <h1>Registrierung</h1>
         <form action="" method="post">
             <table class="u-full-width">
                 <tr><td>Login Name:</td><td><input maxlength="50" name="lName" type="text" value="<?php echo $username; ?>" required="required"></td><td><font color="red"><b><?php echo $usernameErr; ?></b></font></td></tr>

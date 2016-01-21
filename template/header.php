@@ -37,7 +37,7 @@
             } else {
                 ?>
                 <li><a href='/helping_supplies/registration/login.php'>Login</a></li>
-                <li><a href='/helping_supplies/registration/reg.php'>Regestrieren</a></li>
+                <li><a href='/helping_supplies/registration/reg.php'>Registrierung</a></li>
                 <?php
             }
             ?>
